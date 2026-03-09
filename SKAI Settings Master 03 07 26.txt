@@ -5426,152 +5426,6 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
     });
   }
 
-  // Simple / Advanced two-lane UI functions
-  window.skaiActiveGoal = 'balanced';
-  window._skaiSimpleRunning = false;
-  window._skaiSimplePaused  = false;
-
-  window.skaiSetMode = function(mode) {
-    var simpleLane = document.getElementById('skaiSimpleLane');
-    var simpleTab  = document.getElementById('skaiSimpleTab');
-    var advTab     = document.getElementById('skaiAdvTab');
-    var advControls = document.getElementById('skaiAdvControls');
-    if (mode === 'simple') {
-      if (simpleLane)   { simpleLane.style.display = ''; }
-      if (simpleTab)    { simpleTab.classList.add('active'); simpleTab.setAttribute('aria-selected','true'); }
-      if (advTab)       { advTab.classList.remove('active'); advTab.setAttribute('aria-selected','false'); }
-      if (advControls)  { advControls.style.display = 'none'; }
-    } else {
-      if (simpleLane)   { simpleLane.style.display = 'none'; }
-      if (simpleTab)    { simpleTab.classList.remove('active'); simpleTab.setAttribute('aria-selected','false'); }
-      if (advTab)       { advTab.classList.add('active'); advTab.setAttribute('aria-selected','true'); }
-      if (advControls)  { advControls.style.display = 'block'; }
-    }
-  };
-
-  window.skaiSelectGoal = function(goal) {
-    window.skaiActiveGoal = goal;
-    var goals = ['steady','balanced','performance','fast'];
-    for (var i = 0; i < goals.length; i++) {
-      var card = document.getElementById('goalCard-' + goals[i]);
-      if (card) { card.classList.toggle('selected', goals[i] === goal); }
-    }
-    var radios = document.querySelectorAll('input[name="skaiGoal"]');
-    for (var j = 0; j < radios.length; j++) {
-      radios[j].checked = (radios[j].value === goal);
-    }
-  };
-
-  window.skaiToggleAdv = function() {
-    var adv    = document.getElementById('skaiAdvControls');
-    var arrow  = document.getElementById('skaiAdvArrow');
-    var label  = document.getElementById('skaiAdvArrowLabel');
-    var toggle = document.querySelector('.skai-adv-toggle');
-    if (!adv) { return; }
-    var open = adv.style.display === 'block';
-    adv.style.display = open ? 'none' : 'block';
-    if (arrow)  { arrow.classList.toggle('open', !open); }
-    if (label)  { label.textContent = open ? 'Show Advanced Controls' : 'Hide Advanced Controls'; }
-    if (toggle) { toggle.setAttribute('aria-expanded', String(!open)); }
-  };
-
-  window.skaiStartSimple = function() {
-    var goal  = window.skaiActiveGoal || 'balanced';
-    var depth = (document.getElementById('skaiBudgetSelect') || {value:'standard'}).value;
-    var findBtn = document.getElementById('skaiFindBtn');
-    var pauseBtn2 = document.getElementById('skaiSimplePause');
-    window._skaiSimpleRunning = true;
-    window._skaiSimplePaused  = false;
-    if (findBtn)   { findBtn.disabled = true; }
-    if (pauseBtn2) { pauseBtn2.disabled = false; }
-    // Map goal + depth to preset epoch/decay/skip values then trigger existing start.
-    // Depth controls how many candidate settings are evaluated (not a time limit).
-    // quick = fewer candidates (coarser grid), deep = more candidates (finer grid).
-    var presets = {
-      steady: {
-        quick:    { epochs: '50',           decay: '0.5',       skip: '0.25'      },
-        standard: { epochs: '50,100',       decay: '0.25,0.75', skip: '0,0.25'    },
-        deep:     { epochs: '50,100,150',   decay: '0.25,0.5,0.75', skip: '0,0.25,0.5' }
-      },
-      balanced: {
-        quick:    { epochs: '50,100',       decay: '0.5',           skip: '0,0.25'        },
-        standard: { epochs: '50,100,200',   decay: '0.25,0.5,0.75', skip: '0,0.25,0.5'   },
-        deep:     { epochs: '50,100,150,200', decay: '0,0.25,0.5,0.75,1', skip: '0,0.25,0.5,0.75' }
-      },
-      performance: {
-        quick:    { epochs: '100,200',         decay: '0.25,0.75',     skip: '0,0.5'         },
-        standard: { epochs: '100,200,300',     decay: '0,0.25,0.5,1',  skip: '0,0.25,0.5,0.75' },
-        deep:     { epochs: '100,200,300,400', decay: '0,0.25,0.5,0.75,1', skip: '0,0.25,0.5,0.75,1' }
-      },
-      fast: {
-        quick:    { epochs: '50',     decay: '0.5',       skip: '0.25' },
-        standard: { epochs: '50,100', decay: '0.5',       skip: '0.25' },
-        deep:     { epochs: '50,100', decay: '0.25,0.75', skip: '0,0.25' }
-      }
-    };
-    var goalPresets = presets[goal] || presets.balanced;
-    var p = goalPresets[depth] || goalPresets.standard;
-    var epochsEl = document.getElementById('epochsRange');
-    var decayEl  = document.getElementById('recencyDecayRates');
-    var skipEl   = document.getElementById('skipAlphaValues');
-    if (epochsEl) { epochsEl.value = p.epochs; }
-    if (decayEl)  { decayEl.value  = p.decay; }
-    if (skipEl)   { skipEl.value   = p.skip; }
-    // Trigger existing start button
-    var startBtn = document.getElementById('startPrediction');
-    if (startBtn) { startBtn.click(); }
-  };
-
-  window.skaiSimplePauseToggle = function() {
-    var pauseBtn2 = document.getElementById('skaiSimplePause');
-    var pauseBtn  = document.getElementById('pauseButton');
-    window._skaiSimplePaused = !window._skaiSimplePaused;
-    if (pauseBtn2) { pauseBtn2.textContent = window._skaiSimplePaused ? 'Resume' : 'Pause'; }
-    if (pauseBtn)  { pauseBtn.click(); }
-  };
-
-  window.skaiSimpleStopFn = function() {
-    var findBtn  = document.getElementById('skaiFindBtn');
-    var pauseBtn2 = document.getElementById('skaiSimplePause');
-    var resetBtn = document.getElementById('resetButton');
-    window._skaiSimpleRunning = false;
-    window._skaiSimplePaused  = false;
-    if (findBtn)   { findBtn.disabled = false; }
-    if (pauseBtn2) { pauseBtn2.disabled = true; pauseBtn2.textContent = 'Pause'; }
-    if (resetBtn)  { resetBtn.click(); }
-  };
-
-  window.skaiApplyTop3 = function(idx) {
-    var top3 = window._skaiTop3Results;
-    if (!top3 || !top3[idx]) { return; }
-    var r = top3[idx];
-    var epochsEl = document.getElementById('epochsRange');
-    var decayEl  = document.getElementById('recencyDecayRates');
-    var skipEl   = document.getElementById('skipAlphaValues');
-    if (epochsEl && r.epochs)  { epochsEl.value = r.epochs; }
-    if (decayEl  && r.decay)   { decayEl.value  = r.decay; }
-    if (skipEl   && r.skip)    { skipEl.value   = r.skip; }
-  };
-
-  // Placeholder scaffold: generates a diverse random sample for Top 3 display.
-  // Replace the random score with real scoring from the search pipeline when available.
-  window.runDiverseSample = function(sampleSize) {
-    sampleSize = sampleSize || 50;
-    var results = [];
-    var epochOptions  = [50, 100, 150, 200, 300];
-    var decayOptions  = [0, 0.25, 0.5, 0.75, 1];
-    var skipOptions   = [0, 0.25, 0.5, 0.75, 1];
-    for (var i = 0; i < sampleSize; i++) {
-      var e = epochOptions[Math.floor(Math.random() * epochOptions.length)];
-      var d = decayOptions[Math.floor(Math.random() * decayOptions.length)];
-      var s = skipOptions[Math.floor(Math.random()  * skipOptions.length)];
-      results.push({ epochs: e, decay: d, skip: s, score: Math.random() });
-    }
-    results.sort(function(a, b) { return b.score - a.score; });
-    window._skaiTop3Results = results.slice(0, 3);
-    return window._skaiTop3Results;
-  };
-
   // -----------------------------------------------------------------------
   // SNM INTERIM BEST: show best settings as soon as a new best is found
   // during a Smart Narrowing run, not just at the end.
@@ -6127,6 +5981,152 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
     globalData = null;
   });
 });
+
+// Simple / Advanced two-lane UI functions
+window.skaiActiveGoal = 'balanced';
+window._skaiSimpleRunning = false;
+window._skaiSimplePaused  = false;
+
+window.skaiSetMode = function(mode) {
+  var simpleLane = document.getElementById('skaiSimpleLane');
+  var simpleTab  = document.getElementById('skaiSimpleTab');
+  var advTab     = document.getElementById('skaiAdvTab');
+  var advControls = document.getElementById('skaiAdvControls');
+  if (mode === 'simple') {
+    if (simpleLane)   { simpleLane.style.display = ''; }
+    if (simpleTab)    { simpleTab.classList.add('active'); simpleTab.setAttribute('aria-selected','true'); }
+    if (advTab)       { advTab.classList.remove('active'); advTab.setAttribute('aria-selected','false'); }
+    if (advControls)  { advControls.style.display = 'none'; }
+  } else {
+    if (simpleLane)   { simpleLane.style.display = 'none'; }
+    if (simpleTab)    { simpleTab.classList.remove('active'); simpleTab.setAttribute('aria-selected','false'); }
+    if (advTab)       { advTab.classList.add('active'); advTab.setAttribute('aria-selected','true'); }
+    if (advControls)  { advControls.style.display = 'block'; }
+  }
+};
+
+window.skaiSelectGoal = function(goal) {
+  window.skaiActiveGoal = goal;
+  var goals = ['steady','balanced','performance','fast'];
+  for (var i = 0; i < goals.length; i++) {
+    var card = document.getElementById('goalCard-' + goals[i]);
+    if (card) { card.classList.toggle('selected', goals[i] === goal); }
+  }
+  var radios = document.querySelectorAll('input[name="skaiGoal"]');
+  for (var j = 0; j < radios.length; j++) {
+    radios[j].checked = (radios[j].value === goal);
+  }
+};
+
+window.skaiToggleAdv = function() {
+  var adv    = document.getElementById('skaiAdvControls');
+  var arrow  = document.getElementById('skaiAdvArrow');
+  var label  = document.getElementById('skaiAdvArrowLabel');
+  var toggle = document.querySelector('.skai-adv-toggle');
+  if (!adv) { return; }
+  var open = adv.style.display === 'block';
+  adv.style.display = open ? 'none' : 'block';
+  if (arrow)  { arrow.classList.toggle('open', !open); }
+  if (label)  { label.textContent = open ? 'Show Advanced Controls' : 'Hide Advanced Controls'; }
+  if (toggle) { toggle.setAttribute('aria-expanded', String(!open)); }
+};
+
+window.skaiStartSimple = function() {
+  var goal  = window.skaiActiveGoal || 'balanced';
+  var depth = (document.getElementById('skaiBudgetSelect') || {value:'standard'}).value;
+  var findBtn = document.getElementById('skaiFindBtn');
+  var pauseBtn2 = document.getElementById('skaiSimplePause');
+  window._skaiSimpleRunning = true;
+  window._skaiSimplePaused  = false;
+  if (findBtn)   { findBtn.disabled = true; }
+  if (pauseBtn2) { pauseBtn2.disabled = false; }
+  // Map goal + depth to preset epoch/decay/skip values then trigger existing start.
+  // Depth controls how many candidate settings are evaluated (not a time limit).
+  // quick = fewer candidates (coarser grid), deep = more candidates (finer grid).
+  var presets = {
+    steady: {
+      quick:    { epochs: '50',           decay: '0.5',       skip: '0.25'      },
+      standard: { epochs: '50,100',       decay: '0.25,0.75', skip: '0,0.25'    },
+      deep:     { epochs: '50,100,150',   decay: '0.25,0.5,0.75', skip: '0,0.25,0.5' }
+    },
+    balanced: {
+      quick:    { epochs: '50,100',       decay: '0.5',           skip: '0,0.25'        },
+      standard: { epochs: '50,100,200',   decay: '0.25,0.5,0.75', skip: '0,0.25,0.5'   },
+      deep:     { epochs: '50,100,150,200', decay: '0,0.25,0.5,0.75,1', skip: '0,0.25,0.5,0.75' }
+    },
+    performance: {
+      quick:    { epochs: '100,200',         decay: '0.25,0.75',     skip: '0,0.5'         },
+      standard: { epochs: '100,200,300',     decay: '0,0.25,0.5,1',  skip: '0,0.25,0.5,0.75' },
+      deep:     { epochs: '100,200,300,400', decay: '0,0.25,0.5,0.75,1', skip: '0,0.25,0.5,0.75,1' }
+    },
+    fast: {
+      quick:    { epochs: '50',     decay: '0.5',       skip: '0.25' },
+      standard: { epochs: '50,100', decay: '0.5',       skip: '0.25' },
+      deep:     { epochs: '50,100', decay: '0.25,0.75', skip: '0,0.25' }
+    }
+  };
+  var goalPresets = presets[goal] || presets.balanced;
+  var p = goalPresets[depth] || goalPresets.standard;
+  var epochsEl = document.getElementById('epochsRange');
+  var decayEl  = document.getElementById('recencyDecayRates');
+  var skipEl   = document.getElementById('skipAlphaValues');
+  if (epochsEl) { epochsEl.value = p.epochs; }
+  if (decayEl)  { decayEl.value  = p.decay; }
+  if (skipEl)   { skipEl.value   = p.skip; }
+  // Trigger existing start button
+  var startBtn = document.getElementById('startPrediction');
+  if (startBtn) { startBtn.click(); }
+};
+
+window.skaiSimplePauseToggle = function() {
+  var pauseBtn2 = document.getElementById('skaiSimplePause');
+  var pauseBtn  = document.getElementById('pauseButton');
+  window._skaiSimplePaused = !window._skaiSimplePaused;
+  if (pauseBtn2) { pauseBtn2.textContent = window._skaiSimplePaused ? 'Resume' : 'Pause'; }
+  if (pauseBtn)  { pauseBtn.click(); }
+};
+
+window.skaiSimpleStopFn = function() {
+  var findBtn  = document.getElementById('skaiFindBtn');
+  var pauseBtn2 = document.getElementById('skaiSimplePause');
+  var resetBtn = document.getElementById('resetButton');
+  window._skaiSimpleRunning = false;
+  window._skaiSimplePaused  = false;
+  if (findBtn)   { findBtn.disabled = false; }
+  if (pauseBtn2) { pauseBtn2.disabled = true; pauseBtn2.textContent = 'Pause'; }
+  if (resetBtn)  { resetBtn.click(); }
+};
+
+window.skaiApplyTop3 = function(idx) {
+  var top3 = window._skaiTop3Results;
+  if (!top3 || !top3[idx]) { return; }
+  var r = top3[idx];
+  var epochsEl = document.getElementById('epochsRange');
+  var decayEl  = document.getElementById('recencyDecayRates');
+  var skipEl   = document.getElementById('skipAlphaValues');
+  if (epochsEl && r.epochs)  { epochsEl.value = r.epochs; }
+  if (decayEl  && r.decay)   { decayEl.value  = r.decay; }
+  if (skipEl   && r.skip)    { skipEl.value   = r.skip; }
+};
+
+// Placeholder scaffold: generates a diverse random sample for Top 3 display.
+// Replace the random score with real scoring from the search pipeline when available.
+window.runDiverseSample = function(sampleSize) {
+  sampleSize = sampleSize || 50;
+  var results = [];
+  var epochOptions  = [50, 100, 150, 200, 300];
+  var decayOptions  = [0, 0.25, 0.5, 0.75, 1];
+  var skipOptions   = [0, 0.25, 0.5, 0.75, 1];
+  for (var i = 0; i < sampleSize; i++) {
+    var e = epochOptions[Math.floor(Math.random() * epochOptions.length)];
+    var d = decayOptions[Math.floor(Math.random() * decayOptions.length)];
+    var s = skipOptions[Math.floor(Math.random()  * skipOptions.length)];
+    results.push({ epochs: e, decay: d, skip: s, score: Math.random() });
+  }
+  results.sort(function(a, b) { return b.score - a.score; });
+  window._skaiTop3Results = results.slice(0, 3);
+  return window._skaiTop3Results;
+};
 
 // ═══════════════════════════════════════════════════════════════════
 // SKAI Range Slider Engine  (cross-browser, no IIFE so fns are global)
