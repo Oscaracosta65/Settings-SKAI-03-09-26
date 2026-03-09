@@ -2898,11 +2898,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById('currentBestRunLabel').style.display = 'block';
 
     var summaryParagraph =
-      '[[strong]]SKAI Settings Summary for ' + currentLotteryName + ':[[/strong]][[br]][[br]]' +
+      '[[strong]]SKAI Settings Summary for ' + currentLotteryName + ':[[/strong]]<br><br>' +
       'This lab ranks each hyperparameter setting by its [[em]]Weighted Hit Score (WHS)[[/em]],' +
       ' which rewards average correct hits per draw while penalizing high variability between' +
       ' draws. A high WHS means the configuration not only finds more hits on average but does' +
-      ' so consistently across different slices of history.[[br]][[br]]' +
+      ' so consistently across different slices of history.<br><br>' +
       'When reviewing results, focus on settings with strong WHS values and low F1 standard' +
       ' deviation. These "steady performers" are the best candidates to copy into your live' +
       ' SKAI AI or Original AI prediction tools for day-to-day use.';
@@ -4119,44 +4119,44 @@ document.addEventListener('DOMContentLoaded', async function() {
   bestSum.style.display = 'block';
   bestTxt.innerHTML =
     '[[em]]Best settings so far:[[/em]] Scoring profile [[strong]]' + scoringProfile + '[[/strong]]. ' +
-    'Matches are highlighted below so you can see exactly where SKAI lined up with the draw.[[br]][[br]]' +
+    'Matches are highlighted below so you can see exactly where SKAI lined up with the draw.<br><br>' +
 
-    '[[strong]]Performance snapshot[[/strong]][[br]]' +
-    'Actual draw: ' + (bestOverall.actual || 'N/A') + '[[br]]' +
-    'Predicted top 20: ' + (bestOverall.predicted || 'N/A') + '[[br]]' +
+    '[[strong]]Performance snapshot[[/strong]]<br>' +
+    'Actual draw: ' + (bestOverall.actual || 'N/A') + '<br>' +
+    'Predicted top 20: ' + (bestOverall.predicted || 'N/A') + '<br>' +
     'Matched main numbers: [[strong]]' +
-      (mcLast > 0 ? mcLast : 'None') + '[[/strong]][[br]]' +
+      (mcLast > 0 ? mcLast : 'None') + '[[/strong]]<br>' +
     'Matched extra ball: [[strong]]' +
-      (meLast > 0 ? meLast : 'None') + '[[/strong]][[br]][[br]]' +
+      (meLast > 0 ? meLast : 'None') + '[[/strong]]<br><br>' +
 
     'Composite Score: [[strong]]' + bestOverall.compositeScore.toFixed(4) + '[[/strong]], ' +
     'Accuracy: [[strong]]' + (bestOverall.accuracy * 100).toFixed(2) + '%[[/strong]], ' +
     'Avg Matches: [[strong]]' + bestOverall.avgMatchCount.toFixed(2) + '[[/strong]], ' +
     'Max Matches: [[strong]]' + bestOverall.maxMatchesAchieved + '[[/strong]], ' +
-    'F1 Std Dev: [[strong]]' + bestOverall.f1StdDev.toFixed(4) + '[[/strong]][[br]][[br]]' +
+    'F1 Std Dev: [[strong]]' + bestOverall.f1StdDev.toFixed(4) + '[[/strong]]<br><br>' +
 
-    '[[em]]SKAI engine profile for this setting:[[/em]][[br]]' +
+    '[[em]]SKAI engine profile for this setting:[[/em]]<br>' +
     'Main weights (Freq / Skip / Hist): ' +
       '[[strong]]' + bestOverall.skaiFreqWeight + '%[[/strong]] / ' +
       '[[strong]]' + bestOverall.skaiSkipWeight + '%[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiHistWeight + '%[[/strong]][[br]]' +
+      '[[strong]]' + bestOverall.skaiHistWeight + '%[[/strong]]<br>' +
     'Extra-ball weights (Freq / Skip / Hist): ' +
       '[[strong]]' + bestOverall.skaiPbFreqWeight + '%[[/strong]] / ' +
       '[[strong]]' + bestOverall.skaiPbSkipWeight + '%[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiPbHistWeight + '%[[/strong]][[br]]' +
+      '[[strong]]' + bestOverall.skaiPbHistWeight + '%[[/strong]]<br>' +
     'Blend (Skip vs AI): ' +
       '[[strong]]' + bestOverall.skaiBlendSkipPct + '% Skip[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiBlendAiPct + '% AI[[/strong]][[br]]' +
+      '[[strong]]' + bestOverall.skaiBlendAiPct + '% AI[[/strong]]<br>' +
     'Sampling: ' +
       'Temp [[strong]]' + bestOverall.skaiSamplingTemp + '[[/strong]], ' +
       'Diversity [[strong]]' + bestOverall.skaiDiversityPen + '[[/strong]], ' +
-      'Gap scale [[strong]]' + bestOverall.skaiGapScale + '[[/strong]][[br]]' +
+      'Gap scale [[strong]]' + bestOverall.skaiGapScale + '[[/strong]]<br>' +
     'Top-N: ' +
       '[[strong]]' + bestOverall.skaiTopNNumbers + '[[/strong]] numbers, ' +
-      '[[strong]]' + bestOverall.skaiTopNCombos + '[[/strong]] combos[[br]]' +
-    'Run mode: [[strong]]' + bestOverall.skaiRunMode + '[[/strong]]' + '[[br]]' +
+      '[[strong]]' + bestOverall.skaiTopNCombos + '[[/strong]] combos<br>' +
+    'Run mode: [[strong]]' + bestOverall.skaiRunMode + '[[/strong]]' + '<br>' +
     'Strategy: [[strong]]' + (bestOverall.strategy || 'hybrid') + '[[/strong]], ' +
-    'Risk profile: [[strong]]' + (bestOverall.riskProfile || 'balanced') + '[[/strong]][[br]]' +
+    'Risk profile: [[strong]]' + (bestOverall.riskProfile || 'balanced') + '[[/strong]]<br>' +
     'Laplace K: [[strong]]' + (bestOverall.laplaceK != null ? bestOverall.laplaceK : 1) + '[[/strong]], ' +
     'Skip Gamma: [[strong]]' + (bestOverall.skipGamma != null ? bestOverall.skipGamma : 0.2) + '[[/strong]]';
 
@@ -5297,10 +5297,10 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
           '[[strong]]Round ' + (round + 1) + '/' + numRounds + '[[/strong]] &nbsp;|&nbsp; ' +
           'Pool: ' + poolLen + ' &nbsp;|&nbsp; ' +
           'Epoch budget: ' + budget + ' &nbsp;|&nbsp; ' +
-          'Best score: [[span class="snm-kept"]]' + bestScore + '[[/span]][[br]]' +
+          'Best score: [[span class="snm-kept"]]' + bestScore + '[[/span]]<br>' +
           '[[span class="snm-kept"]]&#10003; Promoted: ' + promoted.length + '[[/span]] &nbsp; ' +
           '[[span class="snm-wild"]]&#9733; Wildcards: ' + addedWilds + '[[/span]] &nbsp; ' +
-          '[[span class="snm-div"]]&#8645; Diversity swaps: ' + divSwaps + '[[/span]][[br]]' +
+          '[[span class="snm-div"]]&#8645; Diversity swaps: ' + divSwaps + '[[/span]]<br>' +
           (eliminated.length ? '[[span class="snm-elim"]]&#10007; Eliminated: ' + eliminated.length +
             (elimReasons.length ? ' (sample: ' + elimReasons.join('; ') + ')' : '') +
             '[[/span]]' : '') +
@@ -5389,15 +5389,15 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
       var bs = topSettings[0];
       bestSumEl.style.display = 'block';
       bestTxtEl.innerHTML =
-        '[[em]]Smart Narrowing complete.[[/em]] Best configuration found:[[br]]' +
+        '[[em]]Smart Narrowing complete.[[/em]] Best configuration found:<br>' +
         'Epochs: [[strong]]' + bs.epochs + '[[/strong]], ' +
         'Recency Decay: [[strong]]' + bs.recencyDecay + '[[/strong]], ' +
         'Skip Alpha: [[strong]]' + bs.skipAlpha + '[[/strong]], ' +
         'Activation: [[strong]]' + bs.activationFunction + '[[/strong]], ' +
-        'Layers: [[strong]]' + bs.numHiddenLayers + '[[/strong]][[br]]' +
+        'Layers: [[strong]]' + bs.numHiddenLayers + '[[/strong]]<br>' +
         'Laplace K: [[strong]]' + bs.laplaceK + '[[/strong]], ' +
         'Skip Gamma: [[strong]]' + bs.skipGamma + '[[/strong]], ' +
-        'Blend Skip: [[strong]]' + bs.blendSkipPct + '%[[/strong]][[br]]' +
+        'Blend Skip: [[strong]]' + bs.blendSkipPct + '%[[/strong]]<br>' +
         'Composite Score: [[strong]]' + bs.compositeScore.toFixed(4) + '[[/strong]], ' +
         'Avg Matches: [[strong]]' + bs.avgMatchCount.toFixed(2) + '[[/strong]], ' +
         'F1: [[strong]]' + (bs.f1Score * 100).toFixed(2) + '%[[/strong]]';
@@ -5536,13 +5536,13 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
       var bs = topSettings[0];
       bestSumEl.style.display = 'block';
       bestTxtEl.innerHTML =
-        '[[em]]Best so far (Smart Narrowing in progress\u2026)[[/em]][[br]]' +
+        '[[em]]Best so far (Smart Narrowing in progress\u2026)[[/em]]<br>' +
         'Epochs: [[strong]]' + esc(bs.epochs) + '[[/strong]], ' +
         'Recency Decay: [[strong]]' + esc(bs.recencyDecay) + '[[/strong]], ' +
-        'Skip Alpha: [[strong]]' + esc(bs.skipAlpha) + '[[/strong]][[br]]' +
+        'Skip Alpha: [[strong]]' + esc(bs.skipAlpha) + '[[/strong]]<br>' +
         'Laplace K: [[strong]]' + esc(bs.laplaceK) + '[[/strong]], ' +
         'Skip Gamma: [[strong]]' + esc(bs.skipGamma) + '[[/strong]], ' +
-        'Blend Skip: [[strong]]' + esc(bs.blendSkipPct) + '%[[/strong]][[br]]' +
+        'Blend Skip: [[strong]]' + esc(bs.blendSkipPct) + '%[[/strong]]<br>' +
         'Composite Score: [[strong]]' + esc(bs.compositeScore.toFixed(4)) + '[[/strong]], ' +
         'Avg Matches: [[strong]]' + esc(bs.avgMatchCount.toFixed(2)) + '[[/strong]], ' +
         'F1: [[strong]]' + esc((bs.f1Score * 100).toFixed(2)) + '%[[/strong]]';
