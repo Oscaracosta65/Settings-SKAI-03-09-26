@@ -2898,8 +2898,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById('currentBestRunLabel').style.display = 'block';
 
     var summaryParagraph =
-      '[[strong]]SKAI Settings Summary for ' + currentLotteryName + ':[[/strong]]<br><br>' +
-      'This lab ranks each hyperparameter setting by its [[em]]Weighted Hit Score (WHS)[[/em]],' +
+      '<strong>SKAI Settings Summary for ' + currentLotteryName + ':</strong><br><br>' +
+      'This lab ranks each hyperparameter setting by its <em>Weighted Hit Score (WHS)</em>,' +
       ' which rewards average correct hits per draw while penalizing high variability between' +
       ' draws. A high WHS means the configuration not only finds more hits on average but does' +
       ' so consistently across different slices of history.<br><br>' +
@@ -3909,7 +3909,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                   var highlightArr = runPredictedNumbers.map(function(num) {
                     if (actualNums.indexOf(num) !== -1) {
                       matchedMainCountLast++; // count main-number match
-                      return '[[span class="highlight"]]' + num + '[[/span]]';
+                      return '<span class="highlight">' + num + '</span>';
                     } else {
                       return num;
                     }
@@ -3919,7 +3919,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                   if (M > 0 && runPredictedExtra !== null) {
                     if (actualExtra && runPredictedExtra === actualExtra) {
                       matchedExtraCountLast = 1; // we hit the bonus
-                      extraTxt = '[[span class="highlight"]]' + runPredictedExtra + '[[/span]]';
+                      extraTxt = '<span class="highlight">' + runPredictedExtra + '</span>';
                     } else {
                       extraTxt = runPredictedExtra;
                     }
@@ -3999,22 +3999,22 @@ document.addEventListener('DOMContentLoaded', async function() {
                 predBody.innerHTML = '';
                 topPredictions.forEach(function(tp) {
                   predBody.innerHTML +=
-                    '[[tr]]' +
-                      '[[td]]' + tp.epochs + '[[/td]]' +
-                      '[[td]]' + tp.batchSize + '[[/td]]' +
-                      '[[td]]' + tp.dropoutRate + '[[/td]]' +
-                      '[[td]]' + tp.learningRate + '[[/td]]' +
-                      '[[td]]' + tp.activationFunction + '[[/td]]' +
-                      '[[td]]' + tp.numHiddenLayers + '[[/td]]' +
-                      '[[td]]' + tp.recencyDecay + '[[/td]]' +
-                      '[[td]]' + tp.actual + '[[/td]]' +
-                      '[[td]]' + tp.predicted + '[[/td]]' +
-                      '[[td]]' + tp.avgMatches.toFixed(2) + '[[/td]]' +
-                      '[[td]]' + tp.avgBestRank.toFixed(2) + '[[/td]]' +
-                      '[[td]]' + (tp.f1*100).toFixed(2) + '%[[/td]]' +
-                      '[[td]]' + tp.fiveMatches + '[[/td]]' +
-                      '[[td]]' + tp.extraBall + '[[/td]]' +
-                    '[[/tr]]';
+                    '<tr>' +
+                      '<td>' + tp.epochs + '</td>' +
+                      '<td>' + tp.batchSize + '</td>' +
+                      '<td>' + tp.dropoutRate + '</td>' +
+                      '<td>' + tp.learningRate + '</td>' +
+                      '<td>' + tp.activationFunction + '</td>' +
+                      '<td>' + tp.numHiddenLayers + '</td>' +
+                      '<td>' + tp.recencyDecay + '</td>' +
+                      '<td>' + tp.actual + '</td>' +
+                      '<td>' + tp.predicted + '</td>' +
+                      '<td>' + tp.avgMatches.toFixed(2) + '</td>' +
+                      '<td>' + tp.avgBestRank.toFixed(2) + '</td>' +
+                      '<td>' + (tp.f1*100).toFixed(2) + '%</td>' +
+                      '<td>' + tp.fiveMatches + '</td>' +
+                      '<td>' + tp.extraBall + '</td>' +
+                    '</tr>';
                 });
                 document.getElementById('topPredictions').style.display = 'block';
 
@@ -4090,12 +4090,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 if (bestRow) {
                   // Single, clean row of core hyperparameters for the table
                   var html = ''
-                    + '[[tr]]'
-                    +   '[[td]]' + bestRow.epochs + '[[/td]]'
-                    +   '[[td]]' + bestRow.recencyDecay + '[[/td]]'
-                    +   '[[td]]' + bestRow.skipAlpha + '[[/td]]'
-                    +   '[[td]]' + bestRow.compositeScore.toFixed(4) + '[[/td]]'
-                    + '[[/tr]]';
+                    + '<tr>'
+                    +   '<td>' + bestRow.epochs + '</td>'
+                    +   '<td>' + bestRow.recencyDecay + '</td>'
+                    +   '<td>' + bestRow.skipAlpha + '</td>'
+                    +   '<td>' + bestRow.compositeScore.toFixed(4) + '</td>'
+                    + '</tr>';
 
                   setBody.innerHTML = html;
                   document.getElementById('topSettings').style.display = 'block';
@@ -4118,47 +4118,47 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   bestSum.style.display = 'block';
   bestTxt.innerHTML =
-    '[[em]]Best settings so far:[[/em]] Scoring profile [[strong]]' + scoringProfile + '[[/strong]]. ' +
+    '<em>Best settings so far:</em> Scoring profile <strong>' + scoringProfile + '</strong>. ' +
     'Matches are highlighted below so you can see exactly where SKAI lined up with the draw.<br><br>' +
 
-    '[[strong]]Performance snapshot[[/strong]]<br>' +
+    '<strong>Performance snapshot</strong><br>' +
     'Actual draw: ' + (bestOverall.actual || 'N/A') + '<br>' +
     'Predicted top 20: ' + (bestOverall.predicted || 'N/A') + '<br>' +
-    'Matched main numbers: [[strong]]' +
-      (mcLast > 0 ? mcLast : 'None') + '[[/strong]]<br>' +
-    'Matched extra ball: [[strong]]' +
-      (meLast > 0 ? meLast : 'None') + '[[/strong]]<br><br>' +
+    'Matched main numbers: <strong>' +
+      (mcLast > 0 ? mcLast : 'None') + '</strong><br>' +
+    'Matched extra ball: <strong>' +
+      (meLast > 0 ? meLast : 'None') + '</strong><br><br>' +
 
-    'Composite Score: [[strong]]' + bestOverall.compositeScore.toFixed(4) + '[[/strong]], ' +
-    'Accuracy: [[strong]]' + (bestOverall.accuracy * 100).toFixed(2) + '%[[/strong]], ' +
-    'Avg Matches: [[strong]]' + bestOverall.avgMatchCount.toFixed(2) + '[[/strong]], ' +
-    'Max Matches: [[strong]]' + bestOverall.maxMatchesAchieved + '[[/strong]], ' +
-    'F1 Std Dev: [[strong]]' + bestOverall.f1StdDev.toFixed(4) + '[[/strong]]<br><br>' +
+    'Composite Score: <strong>' + bestOverall.compositeScore.toFixed(4) + '</strong>, ' +
+    'Accuracy: <strong>' + (bestOverall.accuracy * 100).toFixed(2) + '%</strong>, ' +
+    'Avg Matches: <strong>' + bestOverall.avgMatchCount.toFixed(2) + '</strong>, ' +
+    'Max Matches: <strong>' + bestOverall.maxMatchesAchieved + '</strong>, ' +
+    'F1 Std Dev: <strong>' + bestOverall.f1StdDev.toFixed(4) + '</strong><br><br>' +
 
-    '[[em]]SKAI engine profile for this setting:[[/em]]<br>' +
+    '<em>SKAI engine profile for this setting:</em><br>' +
     'Main weights (Freq / Skip / Hist): ' +
-      '[[strong]]' + bestOverall.skaiFreqWeight + '%[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiSkipWeight + '%[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiHistWeight + '%[[/strong]]<br>' +
+      '<strong>' + bestOverall.skaiFreqWeight + '%</strong> / ' +
+      '<strong>' + bestOverall.skaiSkipWeight + '%</strong> / ' +
+      '<strong>' + bestOverall.skaiHistWeight + '%</strong><br>' +
     'Extra-ball weights (Freq / Skip / Hist): ' +
-      '[[strong]]' + bestOverall.skaiPbFreqWeight + '%[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiPbSkipWeight + '%[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiPbHistWeight + '%[[/strong]]<br>' +
+      '<strong>' + bestOverall.skaiPbFreqWeight + '%</strong> / ' +
+      '<strong>' + bestOverall.skaiPbSkipWeight + '%</strong> / ' +
+      '<strong>' + bestOverall.skaiPbHistWeight + '%</strong><br>' +
     'Blend (Skip vs AI): ' +
-      '[[strong]]' + bestOverall.skaiBlendSkipPct + '% Skip[[/strong]] / ' +
-      '[[strong]]' + bestOverall.skaiBlendAiPct + '% AI[[/strong]]<br>' +
+      '<strong>' + bestOverall.skaiBlendSkipPct + '% Skip</strong> / ' +
+      '<strong>' + bestOverall.skaiBlendAiPct + '% AI</strong><br>' +
     'Sampling: ' +
-      'Temp [[strong]]' + bestOverall.skaiSamplingTemp + '[[/strong]], ' +
-      'Diversity [[strong]]' + bestOverall.skaiDiversityPen + '[[/strong]], ' +
-      'Gap scale [[strong]]' + bestOverall.skaiGapScale + '[[/strong]]<br>' +
+      'Temp <strong>' + bestOverall.skaiSamplingTemp + '</strong>, ' +
+      'Diversity <strong>' + bestOverall.skaiDiversityPen + '</strong>, ' +
+      'Gap scale <strong>' + bestOverall.skaiGapScale + '</strong><br>' +
     'Top-N: ' +
-      '[[strong]]' + bestOverall.skaiTopNNumbers + '[[/strong]] numbers, ' +
-      '[[strong]]' + bestOverall.skaiTopNCombos + '[[/strong]] combos<br>' +
-    'Run mode: [[strong]]' + bestOverall.skaiRunMode + '[[/strong]]' + '<br>' +
-    'Strategy: [[strong]]' + (bestOverall.strategy || 'hybrid') + '[[/strong]], ' +
-    'Risk profile: [[strong]]' + (bestOverall.riskProfile || 'balanced') + '[[/strong]]<br>' +
-    'Laplace K: [[strong]]' + (bestOverall.laplaceK != null ? bestOverall.laplaceK : 1) + '[[/strong]], ' +
-    'Skip Gamma: [[strong]]' + (bestOverall.skipGamma != null ? bestOverall.skipGamma : 0.2) + '[[/strong]]';
+      '<strong>' + bestOverall.skaiTopNNumbers + '</strong> numbers, ' +
+      '<strong>' + bestOverall.skaiTopNCombos + '</strong> combos<br>' +
+    'Run mode: <strong>' + bestOverall.skaiRunMode + '</strong>' + '<br>' +
+    'Strategy: <strong>' + (bestOverall.strategy || 'hybrid') + '</strong>, ' +
+    'Risk profile: <strong>' + (bestOverall.riskProfile || 'balanced') + '</strong><br>' +
+    'Laplace K: <strong>' + (bestOverall.laplaceK != null ? bestOverall.laplaceK : 1) + '</strong>, ' +
+    'Skip Gamma: <strong>' + (bestOverall.skipGamma != null ? bestOverall.skipGamma : 0.2) + '</strong>';
 
 
 // Also populate the "Save these settings" form with this best profile
@@ -4334,14 +4334,14 @@ document.addEventListener('DOMContentLoaded', async function() {
           var impStr   = (sr.impact > 0 ? '+' : '') + sr.impact.toFixed(5);
           var varStr   = sr.variance.toFixed(6);
           sensBody.innerHTML +=
-            '[[tr]]' +
-              '[[td]]' + sr.label + '[[/td]]' +
-              '[[td style="text-align:center;"]]' + sr.valuesTested + '[[/td]]' +
-              '[[td]]' + impStr + '[[/td]]' +
-              '[[td]]' + varStr + '[[/td]]' +
-              '[[td style="text-align:center;font-weight:700;"]]' + sr.direction + '[[/td]]' +
-              '[[td]][[span class="sens-bar" style="width:' + barWidth + 'px;max-width:120px;"]][[/span]][[/td]]' +
-            '[[/tr]]';
+            '<tr>' +
+              '<td>' + sr.label + '</td>' +
+              '<td style="text-align:center;">' + sr.valuesTested + '</td>' +
+              '<td>' + impStr + '</td>' +
+              '<td>' + varStr + '</td>' +
+              '<td style="text-align:center;font-weight:700;">' + sr.direction + '</td>' +
+              '<td><span class="sens-bar" style="width:' + barWidth + 'px;max-width:120px;"></span></td>' +
+            '</tr>';
         }
         sensPanel.style.display = 'block';
       }
@@ -5293,18 +5293,18 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
       });
 
       if (snmLogEl) {
-        var entry = '[[div class="snm-round-entry"]]' +
-          '[[strong]]Round ' + (round + 1) + '/' + numRounds + '[[/strong]] &nbsp;|&nbsp; ' +
+        var entry = '<div class="snm-round-entry">' +
+          '<strong>Round ' + (round + 1) + '/' + numRounds + '</strong> &nbsp;|&nbsp; ' +
           'Pool: ' + poolLen + ' &nbsp;|&nbsp; ' +
           'Epoch budget: ' + budget + ' &nbsp;|&nbsp; ' +
-          'Best score: [[span class="snm-kept"]]' + bestScore + '[[/span]]<br>' +
-          '[[span class="snm-kept"]]&#10003; Promoted: ' + promoted.length + '[[/span]] &nbsp; ' +
-          '[[span class="snm-wild"]]&#9733; Wildcards: ' + addedWilds + '[[/span]] &nbsp; ' +
-          '[[span class="snm-div"]]&#8645; Diversity swaps: ' + divSwaps + '[[/span]]<br>' +
-          (eliminated.length ? '[[span class="snm-elim"]]&#10007; Eliminated: ' + eliminated.length +
+          'Best score: <span class="snm-kept">' + bestScore + '</span><br>' +
+          '<span class="snm-kept">&#10003; Promoted: ' + promoted.length + '</span> &nbsp; ' +
+          '<span class="snm-wild">&#9733; Wildcards: ' + addedWilds + '</span> &nbsp; ' +
+          '<span class="snm-div">&#8645; Diversity swaps: ' + divSwaps + '</span><br>' +
+          (eliminated.length ? '<span class="snm-elim">&#10007; Eliminated: ' + eliminated.length +
             (elimReasons.length ? ' (sample: ' + elimReasons.join('; ') + ')' : '') +
-            '[[/span]]' : '') +
-          '[[/div]]';
+            '</span>' : '') +
+          '</div>';
         snmLogEl.innerHTML += entry;
       }
     }
@@ -5373,12 +5373,12 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
     if (setBody && topSettings.length) {
       setBody.innerHTML = '';
       var best = topSettings[0];
-      setBody.innerHTML = '[[tr]]' +
-        '[[td]]' + best.epochs + '[[/td]]' +
-        '[[td]]' + best.recencyDecay + '[[/td]]' +
-        '[[td]]' + best.skipAlpha + '[[/td]]' +
-        '[[td]]' + best.compositeScore.toFixed(4) + '[[/td]]' +
-        '[[/tr]]';
+      setBody.innerHTML = '<tr>' +
+        '<td>' + best.epochs + '</td>' +
+        '<td>' + best.recencyDecay + '</td>' +
+        '<td>' + best.skipAlpha + '</td>' +
+        '<td>' + best.compositeScore.toFixed(4) + '</td>' +
+        '</tr>';
       document.getElementById('topSettings').style.display = 'block';
       skaiRenderTop3(topSettings);
     }
@@ -5389,18 +5389,18 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
       var bs = topSettings[0];
       bestSumEl.style.display = 'block';
       bestTxtEl.innerHTML =
-        '[[em]]Smart Narrowing complete.[[/em]] Best configuration found:<br>' +
-        'Epochs: [[strong]]' + bs.epochs + '[[/strong]], ' +
-        'Recency Decay: [[strong]]' + bs.recencyDecay + '[[/strong]], ' +
-        'Skip Alpha: [[strong]]' + bs.skipAlpha + '[[/strong]], ' +
-        'Activation: [[strong]]' + bs.activationFunction + '[[/strong]], ' +
-        'Layers: [[strong]]' + bs.numHiddenLayers + '[[/strong]]<br>' +
-        'Laplace K: [[strong]]' + bs.laplaceK + '[[/strong]], ' +
-        'Skip Gamma: [[strong]]' + bs.skipGamma + '[[/strong]], ' +
-        'Blend Skip: [[strong]]' + bs.blendSkipPct + '%[[/strong]]<br>' +
-        'Composite Score: [[strong]]' + bs.compositeScore.toFixed(4) + '[[/strong]], ' +
-        'Avg Matches: [[strong]]' + bs.avgMatchCount.toFixed(2) + '[[/strong]], ' +
-        'F1: [[strong]]' + (bs.f1Score * 100).toFixed(2) + '%[[/strong]]';
+        '<em>Smart Narrowing complete.</em> Best configuration found:<br>' +
+        'Epochs: <strong>' + bs.epochs + '</strong>, ' +
+        'Recency Decay: <strong>' + bs.recencyDecay + '</strong>, ' +
+        'Skip Alpha: <strong>' + bs.skipAlpha + '</strong>, ' +
+        'Activation: <strong>' + bs.activationFunction + '</strong>, ' +
+        'Layers: <strong>' + bs.numHiddenLayers + '</strong><br>' +
+        'Laplace K: <strong>' + bs.laplaceK + '</strong>, ' +
+        'Skip Gamma: <strong>' + bs.skipGamma + '</strong>, ' +
+        'Blend Skip: <strong>' + bs.blendSkipPct + '%</strong><br>' +
+        'Composite Score: <strong>' + bs.compositeScore.toFixed(4) + '</strong>, ' +
+        'Avg Matches: <strong>' + bs.avgMatchCount.toFixed(2) + '</strong>, ' +
+        'F1: <strong>' + (bs.f1Score * 100).toFixed(2) + '%</strong>';
     }
 
     spinner.style.display = 'none';
@@ -5516,12 +5516,12 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
     var setBody = document.getElementById('topSettingsBody');
     if (setBody) {
       var best = topSettings[0];
-      setBody.innerHTML = '[[tr]]' +
-        '[[td]]' + esc(best.epochs)                    + '[[/td]]' +
-        '[[td]]' + esc(best.recencyDecay)              + '[[/td]]' +
-        '[[td]]' + esc(best.skipAlpha)                 + '[[/td]]' +
-        '[[td]]' + esc(best.compositeScore.toFixed(4)) + '[[/td]]' +
-        '[[/tr]]';
+      setBody.innerHTML = '<tr>' +
+        '<td>' + esc(best.epochs)                    + '</td>' +
+        '<td>' + esc(best.recencyDecay)              + '</td>' +
+        '<td>' + esc(best.skipAlpha)                 + '</td>' +
+        '<td>' + esc(best.compositeScore.toFixed(4)) + '</td>' +
+        '</tr>';
     }
     var topSettingsEl = document.getElementById('topSettings');
     if (topSettingsEl) { topSettingsEl.style.display = 'block'; }
@@ -5536,16 +5536,16 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
       var bs = topSettings[0];
       bestSumEl.style.display = 'block';
       bestTxtEl.innerHTML =
-        '[[em]]Best so far (Smart Narrowing in progress\u2026)[[/em]]<br>' +
-        'Epochs: [[strong]]' + esc(bs.epochs) + '[[/strong]], ' +
-        'Recency Decay: [[strong]]' + esc(bs.recencyDecay) + '[[/strong]], ' +
-        'Skip Alpha: [[strong]]' + esc(bs.skipAlpha) + '[[/strong]]<br>' +
-        'Laplace K: [[strong]]' + esc(bs.laplaceK) + '[[/strong]], ' +
-        'Skip Gamma: [[strong]]' + esc(bs.skipGamma) + '[[/strong]], ' +
-        'Blend Skip: [[strong]]' + esc(bs.blendSkipPct) + '%[[/strong]]<br>' +
-        'Composite Score: [[strong]]' + esc(bs.compositeScore.toFixed(4)) + '[[/strong]], ' +
-        'Avg Matches: [[strong]]' + esc(bs.avgMatchCount.toFixed(2)) + '[[/strong]], ' +
-        'F1: [[strong]]' + esc((bs.f1Score * 100).toFixed(2)) + '%[[/strong]]';
+        '<em>Best so far (Smart Narrowing in progress\u2026)</em><br>' +
+        'Epochs: <strong>' + esc(bs.epochs) + '</strong>, ' +
+        'Recency Decay: <strong>' + esc(bs.recencyDecay) + '</strong>, ' +
+        'Skip Alpha: <strong>' + esc(bs.skipAlpha) + '</strong><br>' +
+        'Laplace K: <strong>' + esc(bs.laplaceK) + '</strong>, ' +
+        'Skip Gamma: <strong>' + esc(bs.skipGamma) + '</strong>, ' +
+        'Blend Skip: <strong>' + esc(bs.blendSkipPct) + '%</strong><br>' +
+        'Composite Score: <strong>' + esc(bs.compositeScore.toFixed(4)) + '</strong>, ' +
+        'Avg Matches: <strong>' + esc(bs.avgMatchCount.toFixed(2)) + '</strong>, ' +
+        'F1: <strong>' + esc((bs.f1Score * 100).toFixed(2)) + '%</strong>';
     }
 
     // Update the "current best run" label in the settings panel
