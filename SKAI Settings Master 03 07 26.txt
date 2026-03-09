@@ -2320,6 +2320,7 @@ var SKAI_LAB_VERSION = '2.0.0';
 
 function _padStart(str, len, ch) {
   str = String(str);
+  if (typeof len !== 'number' || len < 0) { return str; }
   if (!ch) { ch = ' '; }
   while (str.length < len) { str = ch + str; }
   return str;
@@ -4378,8 +4379,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Persist settings so the user can reproduce or restart with the same configuration.
     skaiSaveLastSettings();
 
-    if(globalData?.inputs) globalData.inputs.dispose();
-    if(globalData?.labels) globalData.labels.dispose();
+    if(globalData && globalData.inputs) globalData.inputs.dispose();
+    if(globalData && globalData.labels) globalData.labels.dispose();
     globalData = null;
   }
 
@@ -6121,8 +6122,8 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
     startBtn.disabled = false;
     pauseBtn.disabled = true;
 
-    if(globalData?.inputs) globalData.inputs.dispose();
-    if(globalData?.labels) globalData.labels.dispose();
+    if(globalData && globalData.inputs) globalData.inputs.dispose();
+    if(globalData && globalData.labels) globalData.labels.dispose();
     globalData = null;
   });
 });
