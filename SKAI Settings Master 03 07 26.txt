@@ -1550,8 +1550,8 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
 
         [[!-- Mode tabs --]]
         [[div class="skai-mode-tabs" role="tablist"]]
-          [[button class="skai-mode-tab active" id="skaiSimpleTab" role="tab" aria-selected="true" onclick="skaiSetMode('simple')"]]Simple (Recommended)[[/button]]
-          [[button class="skai-mode-tab" id="skaiAdvTab" role="tab" aria-selected="false" onclick="skaiSetMode('advanced')"]]Advanced[[/button]]
+          [[button type="button" class="skai-mode-tab active" id="skaiSimpleTab" role="tab" aria-selected="true" onclick="skaiSetMode('simple')"]]Simple (Recommended)[[/button]]
+          [[button type="button" class="skai-mode-tab" id="skaiAdvTab" role="tab" aria-selected="false" onclick="skaiSetMode('advanced')"]]Advanced[[/button]]
         [[/div]]
 
         [[!-- Simple Mode Lane --]]
@@ -1597,10 +1597,10 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
             [[/select]]
           [[/div]]
 
-          [[button class="skai-find-btn" id="skaiFindBtn" onclick="skaiStartSimple()"]]Find Best Settings[[/button]]
+          [[button type="button" class="skai-find-btn" id="skaiFindBtn" onclick="skaiStartSimple()"]]Find Best Settings[[/button]]
           [[div style="display:flex;gap:8px;margin-bottom:12px;"]]
-            [[button id="skaiSimplePause" class="controls" style="flex:1;padding:9px;font-size:0.84rem;" disabled onclick="skaiSimplePauseToggle()"]]Pause[[/button]]
-            [[button id="skaiSimpleStop" class="controls" style="flex:1;padding:9px;font-size:0.84rem;" onclick="skaiSimpleStopFn()"]]Stop[[/button]]
+            [[button type="button" id="skaiSimplePause" class="controls" style="flex:1;padding:9px;font-size:0.84rem;" disabled onclick="skaiSimplePauseToggle()"]]Pause[[/button]]
+            [[button type="button" id="skaiSimpleStop" class="controls" style="flex:1;padding:9px;font-size:0.84rem;" onclick="skaiSimpleStopFn()"]]Stop[[/button]]
           [[/div]]
 
           [[!-- Advanced Controls toggle (visible in simple mode only) --]]
@@ -1970,9 +1970,9 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
         [[/div]]
 
         [[div class="controls"]]
-          [[button id="startPrediction"]][[strong]]Start Search[[/strong]][[/button]]
-          [[button id="pauseButton" disabled]]Pause[[/button]]
-          [[button id="resetButton"]]Reset[[/button]]
+          [[button type="button" id="startPrediction"]][[strong]]Start Search[[/strong]][[/button]]
+          [[button type="button" id="pauseButton" disabled]]Pause[[/button]]
+          [[button type="button" id="resetButton"]]Reset[[/button]]
         [[/div]]
 
         [[div id="loadingSpinner"]][[/div]]
@@ -2052,7 +2052,7 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
       [[div class="skai-top3-label"]]Score[[/div]]
       [[div class="skai-top3-stability" id="skaiTop3Stab0"]]--[[/div]]
       [[ul class="skai-top3-why" id="skaiTop3Why0"]][[/ul]]
-      [[button class="skai-top3-apply" onclick="skaiApplyTop3(0)"]]Save These Settings[[/button]]
+      [[button type="button" class="skai-top3-apply" onclick="skaiApplyTop3(0)"]]Save These Settings[[/button]]
     [[/div]]
     [[div class="skai-top3-card silver" id="skaiTop3Card1"]]
       [[div class="skai-top3-rank"]]#2[[/div]]
@@ -2060,7 +2060,7 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
       [[div class="skai-top3-label"]]Score[[/div]]
       [[div class="skai-top3-stability" id="skaiTop3Stab1"]]--[[/div]]
       [[ul class="skai-top3-why" id="skaiTop3Why1"]][[/ul]]
-      [[button class="skai-top3-apply" onclick="skaiApplyTop3(1)"]]Save These Settings[[/button]]
+      [[button type="button" class="skai-top3-apply" onclick="skaiApplyTop3(1)"]]Save These Settings[[/button]]
     [[/div]]
     [[div class="skai-top3-card bronze" id="skaiTop3Card2"]]
       [[div class="skai-top3-rank"]]#3[[/div]]
@@ -2068,7 +2068,7 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
       [[div class="skai-top3-label"]]Score[[/div]]
       [[div class="skai-top3-stability" id="skaiTop3Stab2"]]--[[/div]]
       [[ul class="skai-top3-why" id="skaiTop3Why2"]][[/ul]]
-      [[button class="skai-top3-apply" onclick="skaiApplyTop3(2)"]]Save These Settings[[/button]]
+      [[button type="button" class="skai-top3-apply" onclick="skaiApplyTop3(2)"]]Save These Settings[[/button]]
     [[/div]]
   [[/div]]
 [[/div]]
@@ -2201,7 +2201,7 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
     [[/div]]
   [[/div]]
   [[div style="margin-top:10px;"]]
-    [[button id="runQABtn" style="font-size:0.82rem;padding:7px 14px;"]]Run QA Tests[[/button]]
+    [[button type="button" id="runQABtn" style="font-size:0.82rem;padding:7px 14px;"]]Run QA Tests[[/button]]
   [[/div]]
 [[/div]]
 
@@ -2215,10 +2215,10 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
 [[div id="exportPanel"]]
   [[h4]]Export Results[[/h4]]
   [[div class="export-btns"]]
-    [[button id="exportJSONBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#16a34a,#22c55e);"]]Export JSON[[/button]]
-    [[button id="exportCSVBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#0369a1,#0ea5e9);"]]Export CSV[[/button]]
-    [[button id="saveToStorageBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#7c3aed,#a855f7);"]]Save to Browser[[/button]]
-    [[button id="loadFromStorageBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#374151,#6b7280);"]]Load Saved[[/button]]
+    [[button type="button" id="exportJSONBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#16a34a,#22c55e);"]]Export JSON[[/button]]
+    [[button type="button" id="exportCSVBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#0369a1,#0ea5e9);"]]Export CSV[[/button]]
+    [[button type="button" id="saveToStorageBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#7c3aed,#a855f7);"]]Save to Browser[[/button]]
+    [[button type="button" id="loadFromStorageBtn" style="font-size:0.82rem;padding:7px 14px;background:linear-gradient(135deg,#374151,#6b7280);"]]Load Saved[[/button]]
   [[/div]]
   [[p style="font-size:0.75rem;color:#6b7280;margin-top:6px;"]]All exports are processed locally in your browser. Nothing is sent to a server.[[/p]]
 [[/div]]
@@ -2233,16 +2233,19 @@ function weightedHitScore(array $actualMain, ?int $actualBonus,
 [[/div]]
 
 [[script]]
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     // Scroll the loading container into center view on start
-setTimeout(() => {
-  document.getElementById('loading')?.scrollIntoView({
-    behavior: 'smooth',
-    block: 'center'
-  });
+setTimeout(function() {
+  var loadingEl = document.getElementById('loadingSpinner');
+  if (loadingEl) {
+    loadingEl.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  }
 }, 100); // slight delay to ensure DOM has time to show the element
 
-  const button = document.querySelector('button');
+  var button = document.querySelector('button');
   if (button) { // safety: only attach if a button exists
     button.addEventListener('click', function () {
       this.classList.add('selected');
@@ -2253,10 +2256,10 @@ setTimeout(() => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.instructions-toggle').forEach(button => {
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.instructions-toggle').forEach(function(button) {
     button.addEventListener('click', function () {
-      const instructions = this.nextElementSibling;
+      var instructions = this.nextElementSibling;
       instructions.classList.toggle('visible');
     });
   });
@@ -2315,6 +2318,13 @@ var SKAI_SETTINGS_REGISTRY = {
 // Lab version used for reproducibility
 var SKAI_LAB_VERSION = '2.0.0';
 
+function _padStart(str, len, ch) {
+  str = String(str);
+  if (!ch) { ch = ' '; }
+  while (str.length < len) { str = ch + str; }
+  return str;
+}
+
 // ---- helper: compute a deterministic run signature from settings ----
 function computeRunSignature(settingsSnapshot) {
   var keys = Object.keys(settingsSnapshot).sort();
@@ -2323,7 +2333,7 @@ function computeRunSignature(settingsSnapshot) {
   for (var i = 0; i < str.length; i++) {
     h = ((h << 5) - h + str.charCodeAt(i)) | 0;
   }
-  return 'sig-' + Math.abs(h).toString(16).toUpperCase().padStart(8,'0');
+  return 'sig-' + _padStart(Math.abs(h).toString(16).toUpperCase(), 8, '0');
 }
 
 // ---- helper: count total combinations given current UI inputs ----
@@ -2426,60 +2436,63 @@ function computeSensitivityReport(results) {
 
 // 1) Table Sort
 function sortTable(tableId, columnIndex){
-  const table = document.getElementById(tableId);
+  var table = document.getElementById(tableId);
   if(!table)return;
-  const tbody = table.querySelector("tbody");
-  const rows = Array.from(tbody.querySelectorAll("tr"));
-  let asc = (table.getAttribute("data-sortcol") == columnIndex && table.getAttribute("data-sortdir")=="asc") ? false : true;
-  rows.sort((a, b) => {
-    const aText = a.cells[columnIndex].innerText.trim();
-    const bText = b.cells[columnIndex].innerText.trim();
-    const aNum = parseFloat(aText.replace(/[^\d.-]/g,''));
-    const bNum = parseFloat(bText.replace(/[^\d.-]/g,''));
+  var tbody = table.querySelector("tbody");
+  var rows = Array.prototype.slice.call(tbody.querySelectorAll("tr"));
+  var asc = (table.getAttribute("data-sortcol") == columnIndex && table.getAttribute("data-sortdir")=="asc") ? false : true;
+  rows.sort(function(a, b) {
+    var aText = a.cells[columnIndex].innerText.trim();
+    var bText = b.cells[columnIndex].innerText.trim();
+    var aNum = parseFloat(aText.replace(/[^\d.-]/g,''));
+    var bNum = parseFloat(bText.replace(/[^\d.-]/g,''));
     if(!isNaN(aNum) && !isNaN(bNum))
       return asc ? aNum - bNum : bNum - aNum;
     else
       return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
   });
-  rows.forEach(r => tbody.removeChild(r));
-  rows.forEach(r => tbody.appendChild(r));
+  rows.forEach(function(r) { tbody.removeChild(r); });
+  rows.forEach(function(r) { tbody.appendChild(r); });
   table.setAttribute("data-sortcol", columnIndex);
   table.setAttribute("data-sortdir", asc ? "asc" : "desc");
 }
 
 // 2) customBinaryCrossentropy + reduceLROnPlateau
 function customBinaryCrossentropy(yTrue, yPred){
-  const EPS = 1e-7;
-  return tf.tidy(()=>{
-    const clipped = yPred.clipByValue(EPS, 1-EPS);
-    const term1 = yTrue.mul(clipped.log()).neg();
-    const term2 = tf.scalar(1).sub(yTrue).mul(tf.scalar(1).sub(clipped).log()).neg();
+  var EPS = 1e-7;
+  return tf.tidy(function(){
+    var clipped = yPred.clipByValue(EPS, 1-EPS);
+    var term1 = yTrue.mul(clipped.log()).neg();
+    var term2 = tf.scalar(1).sub(yTrue).mul(tf.scalar(1).sub(clipped).log()).neg();
     return term1.add(term2).mean();
   });
 }
-function reduceLROnPlateau(opt, factor=0.5, patience=4, minLr=1e-7){
-  let bestVal = Infinity, wait = 0;
+function reduceLROnPlateau(opt, factor, patience, minLr){
+  if (factor === undefined) { factor = 0.5; }
+  if (patience === undefined) { patience = 4; }
+  if (minLr === undefined) { minLr = 1e-7; }
+  var bestVal = Infinity, wait = 0;
   return {
-    onEpochEnd: async (ep, logs) => {
-      const valLoss = logs.val_loss;
+    onEpochEnd: async function(ep, logs) {
+      var valLoss = logs.val_loss;
       if(valLoss < bestVal){
         bestVal = valLoss; wait = 0;
       } else {
         wait++;
         if(wait >= patience){
-          let lr;
+          var lr;
           if(typeof opt.learningRate === 'object'){
             lr = opt.learningRate.dataSync()[0];
           } else {
             lr = opt.learningRate;
           }
-          let newLr = lr * factor; if(newLr < minLr)newLr = minLr;
+          var newLr = lr * factor; if(newLr < minLr)newLr = minLr;
           if(typeof opt.learningRate === 'object'){
             opt.learningRate.assign(newLr);
           } else {
             opt.learningRate = newLr;
           }
-          console.log(`ReduceLROnPlateau => epoch ${ep}, new lr: ${newLr}`);
+          console.log('ReduceLROnPlateau => epoch ' + ep + ', new lr: ' + newLr);
           wait = 0;
         }
       }
@@ -2489,18 +2502,18 @@ function reduceLROnPlateau(opt, factor=0.5, patience=4, minLr=1e-7){
 
 // 3) For epoch-end distribution updates
 function computeEpochDist(predArr, valArr, N){
-  const topK = 20;
-  const dist = [0,0,0,0,0,0];
-  for(let i = 0; i < valArr.length; i++){
-    const mainProbs = predArr[i].slice(0, N);
-    const sorted = mainProbs.map((v, idx) => ({ v, index: idx+1 }));
-    sorted.sort((a, b) => b.v - a.v);
-    const topIdx = sorted.slice(0, topK).map(o => o.index);
-    const actual = [];
-    for(let j = 0; j < N; j++){
+  var topK = 20;
+  var dist = [0,0,0,0,0,0];
+  for(var i = 0; i < valArr.length; i++){
+    var mainProbs = predArr[i].slice(0, N);
+    var sorted = mainProbs.map(function(v, idx) { return { v: v, index: idx+1 }; });
+    sorted.sort(function(a, b) { return b.v - a.v; });
+    var topIdx = sorted.slice(0, topK).map(function(o) { return o.index; });
+    var actual = [];
+    for(var j = 0; j < N; j++){
       if(valArr[i][j] === 1) actual.push(j+1);
     }
-    const c = actual.filter(num => topIdx.includes(num)).length;
+    var c = actual.filter(function(num) { return topIdx.indexOf(num) !== -1; }).length;
     if(c >= 0 && c < dist.length){
       dist[c]++;
     }
@@ -2509,10 +2522,10 @@ function computeEpochDist(predArr, valArr, N){
 }
 
 // 4) Initialize Loss Chart for Training vs Validation Loss
-let trainingLosses = [];
-let validationLosses = [];
-const lossCtx = document.getElementById('lossChart').getContext('2d');
-let lossChart = new Chart(lossCtx, {
+var trainingLosses = [];
+var validationLosses = [];
+var lossCtx = document.getElementById('lossChart').getContext('2d');
+var lossChart = new Chart(lossCtx, {
   type: 'line',
   data: {
     labels: [],
@@ -2552,19 +2565,19 @@ function updateLossChart() {
   }
 
   var hasVal = validationLosses.length > 0;
-  lossChart.data.labels = trainingLosses.map((_, idx) => idx + 1);
+  lossChart.data.labels = trainingLosses.map(function(_, idx) { return idx + 1; });
   lossChart.data.datasets[0].data = trainingLosses;
   lossChart.data.datasets[1].data = hasVal ? validationLosses : [];
 
   lossChart.options.plugins.datalabels = {
-    display: (context) => context.dataIndex === trainingLosses.length - 1,
+    display: function(context) { return context.dataIndex === trainingLosses.length - 1; },
     anchor: 'end',
     align: 'top',
     offset: 4,
     clip: false,
     color: '#333',
     font: { weight: 'bold', size: 14 },
-    formatter: (value) => value.toFixed(4),
+    formatter: function(value) { return value.toFixed(4); },
   };
 
   lossChart.options.layout = {
@@ -2572,10 +2585,10 @@ function updateLossChart() {
   };
 
   // Preserve existing axis options (like title) and only adjust min/max
-  const yScale = lossChart.options.scales.y || {};
-  const allVals = hasVal ? trainingLosses.concat(validationLosses) : trainingLosses;
-  const yMin = Math.min(...allVals) * 0.95;
-  const yMax = Math.max(...allVals) * 1.05;
+  var yScale = lossChart.options.scales.y || {};
+  var allVals = hasVal ? trainingLosses.concat(validationLosses) : trainingLosses;
+  var yMin = Math.min.apply(null, allVals) * 0.95;
+  var yMax = Math.max.apply(null, allVals) * 1.05;
   yScale.min = yMin;
   yScale.max = yMax;
   lossChart.options.scales.y = yScale;
@@ -2586,22 +2599,22 @@ function updateLossChart() {
 [[/script]]
 
 [[script]]
-const currentLotteryName = <?php echo json_encode($chosen['label']); ?>;
-document.addEventListener('DOMContentLoaded', async () => {
+var currentLotteryName = <?php echo json_encode($chosen['label']); ?>;
+document.addEventListener('DOMContentLoaded', async function() {
   await tf.setBackend('webgl');
   await tf.ready();
 
-  const drawsData = <?php echo json_encode($draws); ?>;
-  const pickSize = <?php echo (int)$chosen['pickSize']; ?>;
-  const N = <?php echo (int)$chosen['rangeMain']; ?>;
-  const M = <?php echo (int)$chosen['rangeExtra']; ?>;
+  var drawsData = <?php echo json_encode($draws); ?>;
+  var pickSize = <?php echo (int)$chosen['pickSize']; ?>;
+  var N = <?php echo (int)$chosen['rangeMain']; ?>;
+  var M = <?php echo (int)$chosen['rangeExtra']; ?>;
 
   // UX/Performance hint threshold (warning only, no enforced cap).
-  const WARN_ANALYSIS_COMBOS = 400; // show a gentle warning above this
+  var WARN_ANALYSIS_COMBOS = 400; // show a gentle warning above this
 
-  const matchDistCtx = document.getElementById('matchDistChart').getContext('2d');
-  let matchDistribution = [0,0,0,0,0,0];
-  const matchDistChart = new Chart(matchDistCtx, {
+  var matchDistCtx = document.getElementById('matchDistChart').getContext('2d');
+  var matchDistribution = [0,0,0,0,0,0];
+  var matchDistChart = new Chart(matchDistCtx, {
     type: 'bar',
     data: {
       labels: ['0','1','2','3','4','5'],
@@ -2617,7 +2630,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         datalabels: {
           anchor: 'end', align: 'end', offset: -2,
           color: '#333', font: { weight: 'bold', size: 14 },
-          formatter: v => v
+          formatter: function(v) { return v; }
         }
       },
       scales: {
@@ -2631,57 +2644,57 @@ document.addEventListener('DOMContentLoaded', async () => {
     matchDistChart.update('none');
   }
 
-  const startBtn = document.getElementById('startPrediction');
-  const pauseBtn = document.getElementById('pauseButton');
-  const resetBtn = document.getElementById('resetButton');
-  const spinner = document.getElementById('loadingSpinner');
-  const loadingMsg = document.getElementById('loadingMessage');
-  const pbC = document.getElementById('progressBarContainer');
-  const pb = document.getElementById('progressBar');
-  const pbText = document.getElementById('progressText');
-  const epC = document.getElementById('epochProgressContainer');
-  const epBar = document.getElementById('epochProgressBar');
-  const epText = document.getElementById('epochProgressText');
+  var startBtn = document.getElementById('startPrediction');
+  var pauseBtn = document.getElementById('pauseButton');
+  var resetBtn = document.getElementById('resetButton');
+  var spinner = document.getElementById('loadingSpinner');
+  var loadingMsg = document.getElementById('loadingMessage');
+  var pbC = document.getElementById('progressBarContainer');
+  var pb = document.getElementById('progressBar');
+  var pbText = document.getElementById('progressText');
+  var epC = document.getElementById('epochProgressContainer');
+  var epBar = document.getElementById('epochProgressBar');
+  var epText = document.getElementById('epochProgressText');
 
-  const totalAnalysesSpan = document.getElementById('totalAnalyses');
-  const totalPossibleAnalysesSpan = document.getElementById('totalPossibleAnalyses');
-  const estimatedTimeSpan = document.getElementById('estimatedTime');
+  var totalAnalysesSpan = document.getElementById('totalAnalyses');
+  var totalPossibleAnalysesSpan = document.getElementById('totalPossibleAnalyses');
+  var estimatedTimeSpan = document.getElementById('estimatedTime');
 
-  const currentEpochsSpan = document.getElementById('currentEpochs');
+  var currentEpochsSpan = document.getElementById('currentEpochs');
 
-  const currentRecencyDecaySpan = document.getElementById('currentRecencyDecay');
-  const currentSkipAlphaSpan = document.getElementById('currentSkipAlpha');
+  var currentRecencyDecaySpan = document.getElementById('currentRecencyDecay');
+  var currentSkipAlphaSpan = document.getElementById('currentSkipAlpha');
 
-  const skaiLiveStatus   = document.getElementById('skaiLiveStatus');
-  const skaiRunPlanEl    = document.getElementById('skaiRunPlanSummary');
-  const skaiRunPlanText  = document.getElementById('skaiRunPlanText');
+  var skaiLiveStatus   = document.getElementById('skaiLiveStatus');
+  var skaiRunPlanEl    = document.getElementById('skaiRunPlanSummary');
+  var skaiRunPlanText  = document.getElementById('skaiRunPlanText');
 
 
-  let globalData = null, isPaused = false;
-  let allResults = [], topPredictions = [], topSettings = [];
-  let totalAnalyses = 0, totalPossible = 0;
+  var globalData = null, isPaused = false;
+  var allResults = [], topPredictions = [], topSettings = [];
+  var totalAnalyses = 0, totalPossible = 0;
 
   // NEW: compute per-draw Skip feature vectors (normalized 0..1) for each main number.
   // drawsNumbers: [ [n1, n2, ...], ... ] in chronological order (oldest → newest).
   // Returns: skipsPerStep[t][k] = normalized "draws since last hit" for number (k+1) at draw t.
   function computeSkipFeatureSeries(drawsNumbers, pickSize, mainNumbersMax) {
-    const lastHitIndex = new Array(mainNumbersMax).fill(null);
-    const skipsPerStep = [];
+    var lastHitIndex = new Array(mainNumbersMax).fill(null);
+    var skipsPerStep = [];
 
-    for (let t = 0; t < drawsNumbers.length; t++) {
-      const skipVec = new Array(mainNumbersMax).fill(0);
+    for (var t = 0; t < drawsNumbers.length; t++) {
+      var skipVec = new Array(mainNumbersMax).fill(0);
 
       // For each number, how long since it last appeared?
-      for (let k = 0; k < mainNumbersMax; k++) {
-        const last = lastHitIndex[k];
-        const skip = (last === null) ? t : (t - last - 1);
+      for(var k = 0; k < mainNumbersMax; k++) {
+        var last = lastHitIndex[k];
+        var skip = (last === null) ? t : (t - last - 1);
         skipVec[k] = skip;
       }
 
       // Update lastHitIndex using the CURRENT draw's main numbers.
-      const draw = drawsNumbers[t];
-      for (let j = 0; j < pickSize; j++) {
-        const n = draw[j];
+      var draw = drawsNumbers[t];
+      for(var j = 0; j < pickSize; j++) {
+        var n = draw[j];
         if (n >= 1 && n <= mainNumbersMax) {
           lastHitIndex[n - 1] = t;
         }
@@ -2691,10 +2704,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Normalize skips to 0..1 so they combine safely with other features.
-    let maxSkip = 0;
-    for (let t = 0; t < skipsPerStep.length; t++) {
-      const vec = skipsPerStep[t];
-      for (let i = 0; i < vec.length; i++) {
+    var maxSkip = 0;
+    for(var t = 0; t < skipsPerStep.length; t++) {
+      var vec = skipsPerStep[t];
+      for(var i = 0; i < vec.length; i++) {
         if (vec[i] > maxSkip) {
           maxSkip = vec[i];
         }
@@ -2702,9 +2715,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (maxSkip > 0) {
-      for (let t = 0; t < skipsPerStep.length; t++) {
-        const vec = skipsPerStep[t];
-        for (let i = 0; i < vec.length; i++) {
+      for(var t = 0; t < skipsPerStep.length; t++) {
+        var vec = skipsPerStep[t];
+        for(var i = 0; i < vec.length; i++) {
           vec[i] = vec[i] / maxSkip;
         }
       }
@@ -2720,7 +2733,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return null;
     }
 
-    const valid = drawsData.filter(function (d) {
+    var valid = drawsData.filter(function (d) {
       return d.numbers && d.numbers.length === pickSize;
     });
     if (valid.length < 1) {
@@ -2729,44 +2742,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Build main-number matrix and compute per-draw Skip feature series.
-    const drawsNumbers = valid.map(function (d) { return d.numbers; });
-    const skipSeries   = computeSkipFeatureSeries(drawsNumbers, pickSize, N);
+    var drawsNumbers = valid.map(function (d) { return d.numbers; });
+    var skipSeries   = computeSkipFeatureSeries(drawsNumbers, pickSize, N);
 
     // NEW: pre-compute example ages (0 = newest, larger = older) for recency weighting.
-    const numExamples = valid.length;
-    const ages = [];
-    for (let i = 0; i < numExamples; i++) {
+    var numExamples = valid.length;
+    var ages = [];
+    for(var i = 0; i < numExamples; i++) {
       ages.push(numExamples - 1 - i);
     }
 
     // NEW: keep latest skip vector so we can use it for live prediction input.
-    const latestSkipVec = (skipSeries.length > 0)
+    var latestSkipVec = (skipSeries.length > 0)
       ? skipSeries[skipSeries.length - 1].slice()
       : new Array(N).fill(0);
 
-    const inputsArr = [];
-    const labelsArr = [];
+    var inputsArr = [];
+    var labelsArr = [];
 
-    for (let i = 0; i < valid.length; i++) {
-      const d           = valid[i];
-      const baseNumbers = d.numbers;
-      const skipFeatures = (skipSeries[i] && skipSeries[i].length === N)
+    for(var i = 0; i < valid.length; i++) {
+      var d           = valid[i];
+      var baseNumbers = d.numbers;
+      var skipFeatures = (skipSeries[i] && skipSeries[i].length === N)
         ? skipSeries[i]
         : new Array(N).fill(0); // Fallback safety
 
       // INPUT: main numbers + normalized skip features
-      const inputVec = baseNumbers.concat(skipFeatures);
+      var inputVec = baseNumbers.concat(skipFeatures);
       inputsArr.push(inputVec);
 
       // LABEL: one-hot main numbers (+ extra ball if present)
-      const main = new Array(N).fill(0);
+      var main = new Array(N).fill(0);
       baseNumbers.forEach(function (num) {
         if (num >= 1 && num <= N) {
           main[num - 1] = 1;
         }
       });
 
-      const extra = new Array(M).fill(0);
+      var extra = new Array(M).fill(0);
       if (M > 0 && d.powerball && d.powerball >= 1 && d.powerball <= M) {
         extra[d.powerball - 1] = 1;
       }
@@ -2775,12 +2788,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Min–max normalize across the combined feature vector so later prediction code still works.
-    const inpT = tf.tensor2d(inputsArr);
-    const labT = tf.tensor2d(labelsArr);
-    const minT = inpT.min(0);
-    const maxT = inpT.max(0);
-    const diff = maxT.sub(minT).add(tf.scalar(1e-7));
-    const normIn = inpT.sub(minT).div(diff);
+    var inpT = tf.tensor2d(inputsArr);
+    var labT = tf.tensor2d(labelsArr);
+    var minT = inpT.min(0);
+    var maxT = inpT.max(0);
+    var diff = maxT.sub(minT).add(tf.scalar(1e-7));
+    var normIn = inpT.sub(minT).div(diff);
 
     return {
       inputs: normIn,
@@ -2795,20 +2808,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function updateProgress(done, total, startTime){
 
-    const pct = Math.round((done/total)*100);
+    var pct = Math.round((done/total)*100);
     pb.style.width = pct + '%';
-    pbText.innerText = `Progress: ${pct}% (${done}/${total})`;
-    const elapsed = (Date.now() - startTime) / 1000;
-    const ips = done / elapsed;
-    const remain = total - done;
-    const secLeft = remain / ips;
-    const dd = Math.floor(secLeft/86400);
-    const hh = Math.floor((secLeft % 86400) / 3600);
-    const mm = Math.floor(((secLeft % 86400) % 3600) / 60);
-    estimatedTimeSpan.innerText = done === 0 ? '--' : `${dd}d ${hh}h ${mm}m`;
+    pbText.innerText = 'Progress: ' + pct + '% (' + done + '/' + total + ')';
+    var elapsed = (Date.now() - startTime) / 1000;
+    var ips = done / elapsed;
+    var remain = total - done;
+    var secLeft = remain / ips;
+    var dd = Math.floor(secLeft/86400);
+    var hh = Math.floor((secLeft % 86400) / 3600);
+    var mm = Math.floor(((secLeft % 86400) % 3600) / 60);
+    estimatedTimeSpan.innerText = done === 0 ? '--' : (dd + 'd ' + hh + 'h ' + mm + 'm');
   }
 
-  let epochStartTime = 0;
+  var epochStartTime = 0;
   function updateLiveStatusTicker(epoch, totalEpochs, trainLoss, valLoss, prefix) {
     if (!skaiLiveStatus) { return; }
     var tL = (typeof trainLoss === 'number' && !isNaN(trainLoss)) ? trainLoss.toFixed(4) : '\u2014';
@@ -2822,20 +2835,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     epC.style.display = 'block';
   }
   async function onEpochEndCB(epoch, totalEpochs, logs, model, valX, valY){
-    const e = epoch + 1;
-    const dur = (Date.now() - epochStartTime) / 1000;
-    const left = totalEpochs - e;
-    const est = dur * left;
-    const mm = Math.floor(est/60), ss = Math.floor(est % 60);
-    epText.innerText = `Epoch ${e}/${totalEpochs} took ~${dur.toFixed(2)}s. ~${mm}m ${ss}s left.`;
-    const epPct = Math.round((e / totalEpochs) * 100);
+    var e = epoch + 1;
+    var dur = (Date.now() - epochStartTime) / 1000;
+    var left = totalEpochs - e;
+    var est = dur * left;
+    var mm = Math.floor(est/60), ss = Math.floor(est % 60);
+    epText.innerText = 'Epoch ' + e + '/' + totalEpochs + ' took ~' + dur.toFixed(2) + 's. ~' + mm + 'm ' + ss + 's left.';
+    var epPct = Math.round((e / totalEpochs) * 100);
     epBar.style.width = epPct + '%';
     trainingLosses.push(logs.loss);
     validationLosses.push(logs.val_loss);
     updateLossChart();
-    const preds = model.predict(valX);
-    const pArr = await preds.array();
-    const vArr = await valY.array();
+    var preds = model.predict(valX);
+    var pArr = await preds.array();
+    var vArr = await valY.array();
     matchDistribution = computeEpochDist(pArr, vArr, N);
     updateMatchDistChart();
     preds.dispose();
@@ -2844,32 +2857,33 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function evaluateThresholds(predArr, valArr, thresholds){
-    let bestF1 = -Infinity, bestThr = 0.5;
-    for(let thr of thresholds){
-      let tp = 0, fp = 0, fn = 0;
-      for(let i = 0; i < valArr.length; i++){
-        for(let j = 0; j < N; j++){
-          const predicted = predArr[i][j] > thr ? 1 : 0;
-          const actual = valArr[i][j];
+    var bestF1 = -Infinity, bestThr = 0.5;
+    for(var _ti = 0; _ti < thresholds.length; _ti++){
+      var thr = thresholds[_ti];
+      var tp = 0, fp = 0, fn = 0;
+      for(var i = 0; i < valArr.length; i++){
+        for(var j = 0; j < N; j++){
+          var predicted = predArr[i][j] > thr ? 1 : 0;
+          var actual = valArr[i][j];
           if(predicted === 1 && actual === 1) tp++;
           else if(predicted === 1 && actual === 0) fp++;
           else if(predicted === 0 && actual === 1) fn++;
         }
       }
-      const prec = (tp + fp) === 0 ? 0 : tp / (tp + fp);
-      const rec = (tp + fn) === 0 ? 0 : tp / (tp + fn);
-      const f1 = (prec + rec) === 0 ? 0 : 2 * (prec * rec) / (prec + rec);
+      var prec = (tp + fp) === 0 ? 0 : tp / (tp + fp);
+      var rec = (tp + fn) === 0 ? 0 : tp / (tp + fn);
+      var f1 = (prec + rec) === 0 ? 0 : 2 * (prec * rec) / (prec + rec);
       if(f1 > bestF1){
         bestF1 = f1; bestThr = thr;
       }
     }
-    return { bestF1, bestThr };
+    return { bestF1: bestF1, bestThr: bestThr };
   }
 
   function addRunAndPlotBest(res) {
     allResults.push(res);
-    allResults.sort((a, b) => b.avgF1Score - a.avgF1Score);
-    const best = allResults[0];
+    allResults.sort(function(a, b) { return b.avgF1Score - a.avgF1Score; });
+    var best = allResults[0];
     matchDistribution = best.matchDistribution.slice();
     updateMatchDistChart();
     document.getElementById('currentBestRunLabel').innerText =
@@ -2896,12 +2910,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   async function runSinglePass(){
-    const eVal = document.getElementById('epochsRange').value.trim() || '70-130';
-    const bsVal = '4'; // fixed default – batch size removed from UI
+    var eVal = document.getElementById('epochsRange').value.trim() || '70-130';
+    var bsVal = '4'; // fixed default – batch size removed from UI
 
-    const rdVal = document.getElementById('recencyDecayRates').value.trim() || '1';
-    const scoringProfileSelect = document.getElementById('scoringProfile'); // NEW: scoring profile
-    const scoringProfile = scoringProfileSelect ? scoringProfileSelect.value : 'balanced';
+    var rdVal = document.getElementById('recencyDecayRates').value.trim() || '1';
+    var scoringProfileSelect = document.getElementById('scoringProfile'); // NEW: scoring profile
+    var scoringProfile = scoringProfileSelect ? scoringProfileSelect.value : 'balanced';
 
     // Read SKAI engine settings (metadata only – used for reporting, not for training loops).
     var skaiWindowSizeInput   = document.getElementById('skaiWindowSize');
@@ -3017,58 +3031,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // a single combo. If all knobs are 0, we fall back to a small
     // internal grid so the lab still explores SKAI.
     // ------------------------------------------------------------------
-    var skaiWeightCombos = [];
-    var anySkaiSpecified =
-      skaiFreqWeight   || skaiSkipWeight   || skaiHistWeight   ||
-      skaiPbFreqWeight || skaiPbSkipWeight || skaiPbHistWeight ||
-      skaiBlendSkipPct || skaiBlendAiPct   ||
-      skaiSamplingTemp || skaiDiversityPen || skaiGapScale     ||
-      skaiTopNNumbers  || skaiTopNCombos;
-
-    if (anySkaiSpecified) {
-      // Use exactly what the user entered as a single SKAI profile.
-      skaiWeightCombos.push({
-        freqMain:    skaiFreqWeight,
-        skipMain:    skaiSkipWeight,
-        histMain:    skaiHistWeight,
-        freqPb:      skaiPbFreqWeight,
-        skipPb:      skaiPbSkipWeight,
-        histPb:      skaiPbHistWeight,
-        blendSkip:   skaiBlendSkipPct,
-        blendAi:     skaiBlendAiPct,
-        temp:        skaiSamplingTemp || 0,
-        diversity:   skaiDiversityPen || 0,
-        gapScale:    skaiGapScale || 0,
-        topNNumbers: skaiTopNNumbers || 20,
-        topNCombos:  skaiTopNCombos  || 50,
-        runMode:     skaiRunMode
-      });
-    } else {
-      // All zeros in the UI → try a small built-in grid of SKAI profiles.
-      skaiWeightCombos = [
-        {
-          // Frequency-leaning, balanced blend
-          freqMain: 60, skipMain: 25, histMain: 15,
-          freqPb:   60, skipPb:   25, histPb:   15,
-          blendSkip: 40, blendAi: 60,
-          temp: 0.7, diversity: 0.3, gapScale: 1.0,
-          topNNumbers: 20, topNCombos: 50,
-          runMode: skaiRunMode
-        },
-        {
-          // Skip-heavy, more aggressive
-          freqMain: 40, skipMain: 40, histMain: 20,
-          freqPb:   40, skipPb:   40, histPb:   20,
-          blendSkip: 50, blendAi: 50,
-          temp: 0.8, diversity: 0.4, gapScale: 1.0,
-          topNNumbers: 22, topNCombos: 80,
-          runMode: skaiRunMode
-        }
-      ];
-    }
-
     // Existing recency-decay parsing
-    let recencyArr = rdVal.split(',').map(function (v) {
+    var recencyArr = rdVal.split(',').map(function (v) {
       return parseFloat(v);
     }).filter(function (v) { return !isNaN(v); });
     if (!recencyArr.length) {
@@ -3213,14 +3177,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       skipAlphaArr = [1];
     }
 
-    const drVal = '0.2'; // fixed default – dropout removed from UI
-    const lrVal = '0.002'; // fixed default – learning rate removed from UI
-    const actArr = ['tanh']; // fixed default – activation function removed from UI
-    const hlVal = '2'; // fixed default – hidden layers removed from UI
+    var drVal = '0.2'; // fixed default – dropout removed from UI
+    var lrVal = '0.002'; // fixed default – learning rate removed from UI
+    var actArr = ['tanh']; // fixed default – activation function removed from UI
+    var hlVal = '2'; // fixed default – hidden layers removed from UI
     function parseRange(str){
       var minEpoch = 5;
       var maxEpoch = 1000;
-      if(str.includes('-')){
+      if(str.indexOf('-') !== -1){
         var parts = str.split('-');
         var s = parseInt(parts[0], 10);
         var e = parseInt(parts[1], 10);
@@ -3282,31 +3246,31 @@ document.addEventListener('DOMContentLoaded', async () => {
       return out;
     }
 
-    const [epochStart, epochEnd] = parseRange(eVal);
+    var _parsed = parseRange(eVal); var epochStart = _parsed[0]; var epochEnd = _parsed[1];
 
     // Clean numeric lists: drop NaN/invalid and ensure at least one value.
-    let batchArr = bsVal.split(',').map(Number).filter(function (v) {
+    var batchArr = bsVal.split(',').map(Number).filter(function (v) {
       return !isNaN(v) && v > 0;
     });
     if (!batchArr.length) {
       batchArr = [4]; // safe default
     }
 
-    let dropArr = drVal.split(',').map(Number).filter(function (v) {
+    var dropArr = drVal.split(',').map(Number).filter(function (v) {
       return !isNaN(v) && v >= 0 && v < 1.0;
     });
     if (!dropArr.length) {
       dropArr = [0.2];
     }
 
-    let lrArr = lrVal.split(',').map(Number).filter(function (v) {
+    var lrArr = lrVal.split(',').map(Number).filter(function (v) {
       return !isNaN(v) && v > 0;
     });
     if (!lrArr.length) {
       lrArr = [0.002];
     }
 
-    let hiddenArr = hlVal.split(',').map(Number).filter(function (v) {
+    var hiddenArr = hlVal.split(',').map(Number).filter(function (v) {
       return !isNaN(v) && v >= 0;
     });
     if (!hiddenArr.length) {
@@ -3365,7 +3329,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // NEW: scoring profile weights for WHS + tail metrics
     // scoringProfile is already read at the top of runSinglePass()
-    let lambda, beta3, beta4, betaBonus;
+    var lambda, beta3, beta4, betaBonus;
     switch (scoringProfile) {
       case 'steady':
         lambda    = 0.7;   // stronger penalty for volatility
@@ -3387,8 +3351,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         break;
     }
 
-    const epochsAll = [];
-    for (let e = epochStart; e <= epochEnd; e++) {
+    var epochsAll = [];
+    for(var e = epochStart; e <= epochEnd; e++) {
       epochsAll.push(e);
     }
 
@@ -3458,28 +3422,34 @@ document.addEventListener('DOMContentLoaded', async () => {
       estimatedTimeSpan.innerText = '--';
     }
 
-    let {inputs, labels, numExamples, inputMin, inputMax, ages, latestSkipVec} = globalData; // CHANGED: added ages + latestSkipVec
-    const baseInputs = inputs; // NEW: keep original normalized feature tensor
+    var inputs = globalData.inputs;
+    var labels = globalData.labels;
+    var numExamples = globalData.numExamples;
+    var inputMin = globalData.inputMin;
+    var inputMax = globalData.inputMax;
+    var ages = globalData.ages;
+    var latestSkipVec = globalData.latestSkipVec; // CHANGED: added ages + latestSkipVec
+    var baseInputs = inputs; // NEW: keep original normalized feature tensor
 
     // NEW: Time-series safe windows — no future leakage.
-    const numWindows = 3;        // number of forward windows
-    const windowSize = Math.floor(numExamples / 6); // validation window ≈ 1/6 of draws
+    var numWindows = 3;        // number of forward windows
+    var windowSize = Math.floor(numExamples / 6); // validation window ≈ 1/6 of draws
     // Each window i validates the block AFTER its train region.
-    const inputDim = pickSize + N; // feature length = main numbers + skip features
+    var inputDim = pickSize + N; // feature length = main numbers + skip features
 
     allResults = []; topPredictions = []; topSettings = [];
     matchDistribution = [0, 0, 0, 0, 0, 0];
     updateMatchDistChart();
 
-    let done = 0;
-    const startTime = Date.now();
+    var done = 0;
+    var startTime = Date.now();
 
-    const lastDraw = drawsData.length > 0 ? drawsData[drawsData.length - 1] : null;
-    const actualNums = lastDraw ? lastDraw.numbers : [];
-    const actualExtra = (lastDraw && lastDraw.powerball) ? lastDraw.powerball : null;
+    var lastDraw = drawsData.length > 0 ? drawsData[drawsData.length - 1] : null;
+    var actualNums = lastDraw ? lastDraw.numbers : [];
+    var actualExtra = (lastDraw && lastDraw.powerball) ? lastDraw.powerball : null;
 
     // NEW: Declare finalModel to capture the model from the last fold for live prediction.
-    let finalModel = null;
+    var finalModel = null;
 
     // Outer loop over main-weight combos (Freq/Skip/Hist ranges)
     for (var mwIdx = 0; mwIdx < mainWeightCombos.length; mwIdx++) {
@@ -3522,22 +3492,30 @@ document.addEventListener('DOMContentLoaded', async () => {
       var skipWeight = skaiSkipMain;
       var histWeight = skaiHistMain;
 
-      for(let epochs of epochsAll){
+      for(var _ei = 0; _ei < epochsAll.length; _ei++){
+        var epochs = epochsAll[_ei];
 
-        for(let batchSize of batchArr){
-          for(let dropoutRate of dropArr){
-            for(let learningRate of lrArr){
-              for(let activationFunction of actArr){
-                for(let numHiddenLayers of hiddenArr){
+        for(var _bi = 0; _bi < batchArr.length; _bi++){
+          var batchSize = batchArr[_bi];
+          for(var _di = 0; _di < dropArr.length; _di++){
+            var dropoutRate = dropArr[_di];
+            for(var _li = 0; _li < lrArr.length; _li++){
+              var learningRate = lrArr[_li];
+              for(var _ai = 0; _ai < actArr.length; _ai++){
+                var activationFunction = actArr[_ai];
+                for(var _hi = 0; _hi < hiddenArr.length; _hi++){
+                  var numHiddenLayers = hiddenArr[_hi];
 
                   // NEW: loop over Skip Strength (SKIP_ALPHA)
-                  for (let skipAlpha of skipAlphaArr) {
+                  for (var _si = 0; _si < skipAlphaArr.length; _si++) {
+                  var skipAlpha = skipAlphaArr[_si];
 
-                  for (let recencyDecay of recencyArr) {
+                  for (var _ri = 0; _ri < recencyArr.length; _ri++) {
+                  var recencyDecay = recencyArr[_ri];
 
                 if(isPaused){
-                  await new Promise(r => {
-                    const iv = setInterval(()=>{
+                  await new Promise(function(r) {
+                    var iv = setInterval(function(){
                       if(!isPaused){
                         clearInterval(iv);
                         r();
@@ -3552,110 +3530,110 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // NEW: scale skip feature columns by SKIP_ALPHA.
                 // Feature vector layout: [0 .. pickSize-1] = main numbers,
                 // [pickSize .. pickSize+N-1] = skip features.
-                const scaleArr = [];
-                for (let i = 0; i < pickSize; i++) {
+                var scaleArr = [];
+                for(var i = 0; i < pickSize; i++) {
                   scaleArr.push(1);
                 }
-                for (let i = 0; i < N; i++) {
+                for(var i = 0; i < N; i++) {
                   scaleArr.push(skipAlpha);
                 }
-                const featureScale = tf.tensor1d(scaleArr);
-                const inputsScaled = baseInputs.mul(featureScale);
+                var featureScale = tf.tensor1d(scaleArr);
+                var inputsScaled = baseInputs.mul(featureScale);
 
                 // NEW: recencyDecay determines how much history we keep.
                 // recencyDecay clamped to [0,1], then mapped to [0.3,1.0] of history.
-                const rdClamped = Math.max(0, Math.min(1, recencyDecay));
-                const minFrac = 0.3;
-                const maxFrac = 1.0;
-                let fracHist = minFrac + (maxFrac - minFrac) * rdClamped;
+                var rdClamped = Math.max(0, Math.min(1, recencyDecay));
+                var minFrac = 0.3;
+                var maxFrac = 1.0;
+                var fracHist = minFrac + (maxFrac - minFrac) * rdClamped;
 
-                let localNumExamples = Math.floor(numExamples * fracHist);
+                var localNumExamples = Math.floor(numExamples * fracHist);
                 if (localNumExamples < numWindows * 3) {
                   // Ensure we still have enough draws for rolling windows.
                   localNumExamples = Math.min(numExamples, numWindows * 3);
                 }
-                const effectiveStart = numExamples - localNumExamples;
+                var effectiveStart = numExamples - localNumExamples;
 
                 // Slice only the most recent "localNumExamples" draws
-                const localInputs = inputsScaled.slice([effectiveStart, 0], [localNumExamples, -1]);
-                const localLabels = labels.slice([effectiveStart, 0], [localNumExamples, -1]);
+                var localInputs = inputsScaled.slice([effectiveStart, 0], [localNumExamples, -1]);
+                var localLabels = labels.slice([effectiveStart, 0], [localNumExamples, -1]);
 
                 // Window size tuned to this recency subset
-                const localWindowSize = Math.max(1, Math.floor(localNumExamples / (numWindows * 3)));
+                var localWindowSize = Math.max(1, Math.floor(localNumExamples / (numWindows * 3)));
 
-                let totalLoss = 0, totalAcc = 0, totalPrec = 0, totalRec = 0, totalF1 = 0;
+                var totalLoss = 0, totalAcc = 0, totalPrec = 0, totalRec = 0, totalF1 = 0;
 
-                let matchCount = 0, bestRankSum = 0, maxMatches = 0, perfectFive = 0, extraMatches = 0;
-                let foldF1s = [];
-                let totalValExamples = 0; // NEW: track validation draws for this hyperparameter combo
+                var matchCount = 0, bestRankSum = 0, maxMatches = 0, perfectFive = 0, extraMatches = 0;
+                var foldF1s = [];
+                var totalValExamples = 0; // NEW: track validation draws for this hyperparameter combo
 
                 // === NEW: compute weighted hit stats + tail metrics for this setting ===
                 // perDrawWHS: WHS per validation draw
-                let perDrawWHS = [];
+                var perDrawWHS = [];
                 // Tail counters across all validation draws for this hyperparameter combo
-                let drawsWith3Plus = 0;
-                let drawsWith4Plus = 0;
-                let drawsWithBonusHit = 0;
-                let totalDrawsEval = 0;
+                var drawsWith3Plus = 0;
+                var drawsWith4Plus = 0;
+                var drawsWithBonusHit = 0;
+                var totalDrawsEval = 0;
 
-                const wMain  = <?php echo (int)($chosen['mainWeight'] ?? 5); ?>;
-                const wBonus = <?php echo (int)($chosen['bonusWeight'] ?? 2); ?>;
+                var wMain  = <?php echo (int)($chosen['mainWeight'] ?? 5); ?>;
+                var wBonus = <?php echo (int)($chosen['bonusWeight'] ?? 2); ?>;
                 
 
 
 
 
                 // NEW: Time-series safe rolling validation windows on the recency subset.
-                for (let w = 0; w < numWindows; w++) {
+                for(var w = 0; w < numWindows; w++) {
 
                   trainingLosses = [];
                   validationLosses = [];
                   updateLossChart();
 
                   // Define window ranges within the local (recency-limited) history
-                  const trainEnd = (w + 2) * localWindowSize;  // expand train with each window
+                  var trainEnd = (w + 2) * localWindowSize;  // expand train with each window
                   if (trainEnd >= localNumExamples) {
                     break; // not enough data left for this window
                   }
-                  const valStart = trainEnd;
-                  const valEnd   = Math.min(trainEnd + localWindowSize, localNumExamples);
+                  var valStart = trainEnd;
+                  var valEnd   = Math.min(trainEnd + localWindowSize, localNumExamples);
 
                   // Slice training region: [0 .. trainEnd-1] inside local subset
-                  const trainX = localInputs.slice([0, 0], [trainEnd, -1]);
-                  const trainY = localLabels.slice([0, 0], [trainEnd, -1]);
+                  var trainX = localInputs.slice([0, 0], [trainEnd, -1]);
+                  var trainY = localLabels.slice([0, 0], [trainEnd, -1]);
 
                   // Slice validation region: [valStart .. valEnd-1] inside local subset
-                  const valCount = valEnd - valStart;
+                  var valCount = valEnd - valStart;
                   if (valCount <= 0) {
                     break;
                   }
-                  const valX = localInputs.slice([valStart, 0], [valCount, -1]);
-                  const valY = localLabels.slice([valStart, 0], [valCount, -1]);
+                  var valX = localInputs.slice([valStart, 0], [valCount, -1]);
+                  var valY = localLabels.slice([valStart, 0], [valCount, -1]);
                   totalValExamples += valCount; // NEW: track how many validation draws we evaluated
 
                   // === MODEL BUILDING ===
-                  const model = tf.sequential();
+                  var model = tf.sequential();
                   model.add(tf.layers.dense({
                     units: 128,
                     activation: activationFunction,
                     inputShape: [inputDim]
                   }));
                   model.add(tf.layers.dropout({ rate: dropoutRate }));
-                  for (let i = 0; i < numHiddenLayers; i++) {
+                  for(var i = 0; i < numHiddenLayers; i++) {
                     model.add(tf.layers.dense({ units: 64, activation: activationFunction }));
                     model.add(tf.layers.dropout({ rate: dropoutRate }));
                   }
                   model.add(tf.layers.dense({ units: N + M, activation: 'sigmoid' }));
 
-                  const opt = tf.train.adam(learningRate);
+                  var opt = tf.train.adam(learningRate);
                   model.compile({
                     optimizer: opt,
                     loss: customBinaryCrossentropy,
                     metrics: ['binaryAccuracy']
                   });
 
-                  let patience = 5, patienceCounter = 0;
-                  const lrSched = reduceLROnPlateau(opt, 0.5, 4, 1e-7);
+                  var patience = 5, patienceCounter = 0;
+                  var lrSched = reduceLROnPlateau(opt, 0.5, 4, 1e-7);
 
                   await model.fit(trainX, trainY, {
                     epochs,
@@ -3663,8 +3641,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     validationData: [valX, valY], // CHANGED: no validation sample weights
                     verbose: 0,
                     callbacks: {
-                      onEpochBegin: async (ep) => onEpochBeginCB(ep, epochs),
-                      onEpochEnd: async (ep, logs) => {
+                      onEpochBegin: async function(ep) { return onEpochBeginCB(ep, epochs); },
+                      onEpochEnd: async function(ep, logs) {
                         await onEpochEndCB(ep, epochs, logs, model, valX, valY);
                         if(logs.val_loss < Number.MAX_VALUE){
                           patienceCounter = 0;
@@ -3680,32 +3658,32 @@ document.addEventListener('DOMContentLoaded', async () => {
                   });
 
                   // === VALIDATION PRED & METRICS ===
-                  const preds = model.predict(valX);
-                  const predArr = await preds.array();
-                  const valArr = await valY.array();
+                  var preds = model.predict(valX);
+                  var predArr = await preds.array();
+                  var valArr = await valY.array();
 
-                  let foldMatchCount = 0;
-                  let tp = 0, fp = 0, fn = 0;
+                  var foldMatchCount = 0;
+                  var tp = 0, fp = 0, fn = 0;
 
-                  for(let i = 0; i < valArr.length; i++){
-                    const mainProbs = predArr[i].slice(0, N);
-                    const extraProbs = predArr[i].slice(N, N + M);
+                  for(var i = 0; i < valArr.length; i++){
+                    var mainProbs = predArr[i].slice(0, N);
+                    var extraProbs = predArr[i].slice(N, N + M);
 
-                    const sortedMain = mainProbs.map((val, idx) => ({ val, index: idx+1 }));
-                    sortedMain.sort((a, b) => b.val - a.val);
-                    const topIdx = sortedMain.slice(0, 20).map(o => o.index);
+                    var sortedMain = mainProbs.map(function(val, idx) { return { val: val, index: idx+1 }; });
+                    sortedMain.sort(function(a, b) { return b.val - a.val; });
+                    var topIdx = sortedMain.slice(0, 20).map(function(o) { return o.index; });
 
                     // Actual positions
-                    const actualArray = [];
-                    for(let j = 0; j < N; j++){
+                    var actualArray = [];
+                    for(var j = 0; j < N; j++){
                       if(valArr[i][j] === 1) actualArray.push(j+1);
                     }
 
                     // Matches
-                    const matchedArr = actualArray.filter(n => topIdx.includes(n));
+                    var matchedArr = actualArray.filter(function(n) { return topIdx.indexOf(n) !== -1; });
                     foldMatchCount += matchedArr.length;
 
-                    const hitsThisDraw = matchedArr.length;
+                    var hitsThisDraw = matchedArr.length;
                     if (hitsThisDraw > maxMatches) maxMatches = hitsThisDraw;
 
                     // NEW: tail hit counters (per draw)
@@ -3717,29 +3695,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
 
                     // Rank score
-                    let bestRank = Infinity;
-                    matchedArr.forEach(n => {
-                      const r = topIdx.indexOf(n) + 1;
+                    var bestRank = Infinity;
+                    matchedArr.forEach(function(n) {
+                      var r = topIdx.indexOf(n) + 1;
                       if (r < bestRank) bestRank = r;
                     });
                     if (bestRank === Infinity) bestRank = topIdx.length + 1;
                     bestRankSum += bestRank;
 
                     // Bonus ball
-                    let actualEB = null;
-                    for (let ex = 0; ex < M; ex++) {
+                    var actualEB = null;
+                    for(var ex = 0; ex < M; ex++) {
                       if (valArr[i][N + ex] === 1) actualEB = ex + 1;
                     }
-                    let eBest = -1, eVal = -Infinity;
-                    for (let ex = 0; ex < M; ex++) {
+                    var eBest = -1, eVal = -Infinity;
+                    for(var ex = 0; ex < M; ex++) {
                       if (extraProbs[ex] > eVal) {
                         eVal = extraProbs[ex];
                         eBest = ex + 1;
                       }
                     }
 
-                    const bonusHit = (actualEB && eBest === actualEB) ? 1 : 0;
-                    const whs = wMain * matchedArr.length + wBonus * bonusHit;
+                    var bonusHit = (actualEB && eBest === actualEB) ? 1 : 0;
+                    var whs = wMain * matchedArr.length + wBonus * bonusHit;
                     perDrawWHS.push(whs);
 
                     // NEW: bonus tail counter + total draws evaluated
@@ -3750,26 +3728,26 @@ document.addEventListener('DOMContentLoaded', async () => {
                     totalDrawsEval++;
 
                     // F1 counts
-                    for(let j = 0; j < N; j++){
-                      const predicted = predArr[i][j] > 0.5 ? 1 : 0;
-                      const act = valArr[i][j];
+                    for(var j = 0; j < N; j++){
+                      var predicted = predArr[i][j] > 0.5 ? 1 : 0;
+                      var act = valArr[i][j];
                       if(predicted === 1 && act === 1) tp++;
                       else if(predicted === 1 && act === 0) fp++;
                       else if(predicted === 0 && act === 1) fn++;
                     }
                   }
 
-                  const prec = (tp + fp) === 0 ? 0 : tp/(tp+fp);
-                  const rec =  (tp + fn) === 0 ? 0 : tp/(tp+fn);
-                  const foldF1 = (prec + rec === 0) ? 0 : 2*(prec*rec)/(prec+rec);
+                  var prec = (tp + fp) === 0 ? 0 : tp/(tp+fp);
+                  var rec =  (tp + fn) === 0 ? 0 : tp/(tp+fn);
+                  var foldF1 = (prec + rec === 0) ? 0 : 2*(prec*rec)/(prec+rec);
 
                   foldF1s.push(foldF1);
                   totalF1 += foldF1;
                   matchCount += foldMatchCount;
 
-                  const evalOut = model.evaluate(valX, valY, { batchSize, verbose: 0 });
-                  const lossVal = evalOut[0].dataSync()[0];
-                  const accVal  = evalOut[1].dataSync()[0];
+                  var evalOut = model.evaluate(valX, valY, { batchSize: batchSize, verbose: 0 });
+                  var lossVal = evalOut[0].dataSync()[0];
+                  var accVal  = evalOut[1].dataSync()[0];
                   evalOut[0].dispose();
                   evalOut[1].dispose();
 
@@ -3796,40 +3774,40 @@ document.addEventListener('DOMContentLoaded', async () => {
                 localLabels.dispose();
 
                 // === Tail-helper summary across windows (optional, for UX / debugging) ===
-                const totalWindows = numWindows > 0 ? numWindows : 1;
-                const avgF1_tail = totalF1 / totalWindows;
-                let varF1_tail = 0;
+                var totalWindows = numWindows > 0 ? numWindows : 1;
+                var avgF1_tail = totalF1 / totalWindows;
+                var varF1_tail = 0;
                 if (foldF1s.length > 0) {
                   varF1_tail = foldF1s.reduce(function (acc, val) {
                     return acc + Math.pow(val - avgF1_tail, 2);
                   }, 0) / foldF1s.length;
                 }
-                const stdF1_tail = Math.sqrt(varF1_tail);
+                var stdF1_tail = Math.sqrt(varF1_tail);
 
                 // === Aggregate metrics for this setting (windows + draws) ===
-                const usedWindows = foldF1s.length || 1; // actual number of executed windows
-                const avgF1 = totalF1 / usedWindows;
-                const varF1 = foldF1s.length
+                var usedWindows = foldF1s.length || 1; // actual number of executed windows
+                var avgF1 = totalF1 / usedWindows;
+                var varF1 = foldF1s.length
                   ? foldF1s.reduce(function (acc, val) {
                       return acc + Math.pow(val - avgF1, 2);
                     }, 0) / foldF1s.length
                   : 0;
-                const stdF1 = Math.sqrt(varF1);
+                var stdF1 = Math.sqrt(varF1);
 
                 // Use totalValExamples as denominator for draw-based metrics
-                const denomDraws = totalValExamples || 1;
-                const avgMatches = denomDraws ? matchCount / denomDraws : 0;
-                const avgAcc = usedWindows ? totalAcc / usedWindows : 0;
-                const avgLoss = usedWindows ? totalLoss / usedWindows : 0;
-                const avgPrec = usedWindows ? totalPrec / usedWindows : 0;
-                const avgRec = usedWindows ? totalRec / usedWindows : 0;
-                const avgRank = denomDraws ? bestRankSum / denomDraws : 0;
+                var denomDraws = totalValExamples || 1;
+                var avgMatches = denomDraws ? matchCount / denomDraws : 0;
+                var avgAcc = usedWindows ? totalAcc / usedWindows : 0;
+                var avgLoss = usedWindows ? totalLoss / usedWindows : 0;
+                var avgPrec = usedWindows ? totalPrec / usedWindows : 0;
+                var avgRec = usedWindows ? totalRec / usedWindows : 0;
+                var avgRank = denomDraws ? bestRankSum / denomDraws : 0;
 
                 // perDrawWHS was pushed on each draw inside the fold loop
-                const muWHS = perDrawWHS.length
+                var muWHS = perDrawWHS.length
                   ? perDrawWHS.reduce(function (sum, x) { return sum + x; }, 0) / perDrawWHS.length
                   : 0;
-                const sigmaWHS = perDrawWHS.length
+                var sigmaWHS = perDrawWHS.length
                   ? Math.sqrt(
                       perDrawWHS.reduce(function (acc, x) {
                         return acc + Math.pow(x - muWHS, 2);
@@ -3839,9 +3817,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 // Tail probabilities:
                 // p3 = P(hits ≥ 3), p4 = P(hits ≥ 4), pBonus = P(bonus hit)
-                const p3 = denomDraws ? drawsWith3Plus / denomDraws : 0;
-                const p4 = denomDraws ? drawsWith4Plus / denomDraws : 0;
-                const pBonus = denomDraws ? drawsWithBonusHit / denomDraws : 0;
+                var p3 = denomDraws ? drawsWith3Plus / denomDraws : 0;
+                var p4 = denomDraws ? drawsWith4Plus / denomDraws : 0;
+                var pBonus = denomDraws ? drawsWithBonusHit / denomDraws : 0;
 
                 // Final selection score using SKAI-style main weights + profile-dependent penalties
                 // Normalize freq/skip/hist weights so they sum to 1
@@ -3867,38 +3845,38 @@ document.addEventListener('DOMContentLoaded', async () => {
                   wh * metricHist;
 
                 // Combine SKAI-weighted score with volatility penalty and bonus-tail reward
-                const selectionScore =
+                var selectionScore =
                   skaiWeightedScore
                   - lambda * sigmaWHS
                   + betaBonus * pBonus;
 
                 // use selectionScore instead of the old composite
-                const composite = selectionScore;
+                var composite = selectionScore;
 
                 // Use finalModel for live prediction from the last draw:
-                let runPredictedNumbers = [];
-                let runPredictedExtra = null;
+                var runPredictedNumbers = [];
+                var runPredictedExtra = null;
                 if(lastDraw && finalModel != null){
                   // NEW: build the same type of feature vector used in training:
                   // main numbers + latest skip features.
-                  const skipVecForLatest = latestSkipVec || new Array(N).fill(0);
-                  const featureVec = lastDraw.numbers.concat(skipVecForLatest);
+                  var skipVecForLatest = latestSkipVec || new Array(N).fill(0);
+                  var featureVec = lastDraw.numbers.concat(skipVecForLatest);
 
-                  const latestInput = tf.tensor2d([featureVec]);
-                  const finalPred = tf.tidy(function() {
-                    const inputRange = inputMax.sub(inputMin).add(tf.scalar(1e-7));
-                    const normLatestT = latestInput.sub(inputMin).div(inputRange);
+                  var latestInput = tf.tensor2d([featureVec]);
+                  var finalPred = tf.tidy(function() {
+                    var inputRange = inputMax.sub(inputMin).add(tf.scalar(1e-7));
+                    var normLatestT = latestInput.sub(inputMin).div(inputRange);
                     return finalModel.predict(normLatestT);
                   });
-                  const finalPredArr = await finalPred.array();
-                  const mainProbsFinal = finalPredArr[0].slice(0, N);
-                  const sortedFinal = mainProbsFinal.map((v, idx) => ({ v, index: idx + 1 }));
-                  sortedFinal.sort((a, b) => b.v - a.v);
-                  runPredictedNumbers = sortedFinal.slice(0, 20).map(o => o.index);
+                  var finalPredArr = await finalPred.array();
+                  var mainProbsFinal = finalPredArr[0].slice(0, N);
+                  var sortedFinal = mainProbsFinal.map(function(v, idx) { return { v: v, index: idx + 1 }; });
+                  sortedFinal.sort(function(a, b) { return b.v - a.v; });
+                  runPredictedNumbers = sortedFinal.slice(0, 20).map(function(o) { return o.index; });
                   if(M > 0){
-                    const extraProbsFinal = finalPredArr[0].slice(N, N + M);
-                    let bestExtraVal = -Infinity, bestExtra = -1;
-                    for(let x = 0; x < M; x++){
+                    var extraProbsFinal = finalPredArr[0].slice(N, N + M);
+                    var bestExtraVal = -Infinity, bestExtra = -1;
+                    for(var x = 0; x < M; x++){
                       if(extraProbsFinal[x] > bestExtraVal){
                         bestExtraVal = extraProbsFinal[x];
                         bestExtra = x + 1;
@@ -3914,33 +3892,33 @@ document.addEventListener('DOMContentLoaded', async () => {
                   finalModel = null;
                 }
 
-                let actualStr = 'No data';
+                var actualStr = 'No data';
                 if(lastDraw){
                   actualStr = actualNums.join(', ');
-                  if(actualExtra) actualStr += ` (Extra: ${actualExtra})`;
+                  if(actualExtra) actualStr += ' (Extra: ' + actualExtra + ')';
                 }
 
                 // Re-add highlighting for predicted numbers
                 // and count how many actually matched on this last draw.
-                let predictedStr = 'No predictions found';
-                let matchedMainCountLast  = 0;
-                let matchedExtraCountLast = 0;
+                var predictedStr = 'No predictions found';
+                var matchedMainCountLast  = 0;
+                var matchedExtraCountLast = 0;
 
                 if (runPredictedNumbers.length > 0) {
-                  const highlightArr = runPredictedNumbers.map(num => {
-                    if (actualNums.includes(num)) {
+                  var highlightArr = runPredictedNumbers.map(function(num) {
+                    if (actualNums.indexOf(num) !== -1) {
                       matchedMainCountLast++; // count main-number match
-                      return `[[span class="highlight"]]${num}[[/span]]`;
+                      return '[[span class="highlight"]]' + num + '[[/span]]';
                     } else {
                       return num;
                     }
                   });
 
-                  let extraTxt = '';
+                  var extraTxt = '';
                   if (M > 0 && runPredictedExtra !== null) {
                     if (actualExtra && runPredictedExtra === actualExtra) {
                       matchedExtraCountLast = 1; // we hit the bonus
-                      extraTxt = `[[span class="highlight"]]${runPredictedExtra}[[/span]]`;
+                      extraTxt = '[[span class="highlight"]]' + runPredictedExtra + '[[/span]]';
                     } else {
                       extraTxt = runPredictedExtra;
                     }
@@ -3948,7 +3926,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                   predictedStr = highlightArr.join(', ');
                   if (extraTxt) {
-                    predictedStr += ` (Extra: ${extraTxt})`;
+                    predictedStr += ' (Extra: ' + extraTxt + ')';
                   }
                  }
                 
@@ -4014,14 +3992,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                   compositeScore: composite
                 });
 
-                topPredictions.sort((a, b) => b.compositeScore - a.compositeScore);
+                topPredictions.sort(function(a, b) { return b.compositeScore - a.compositeScore; });
                 if(topPredictions.length > 3) topPredictions.pop();
-                const predBody = document.getElementById('topPredictionsBody');
+                var predBody = document.getElementById('topPredictionsBody');
                 predBody.innerHTML = '';
-                topPredictions.forEach(tp => {
+                topPredictions.forEach(function(tp) {
                   predBody.innerHTML +=
                     '[[tr]]' +
                       '[[td]]' + tp.epochs + '[[/td]]' +
+                      '[[td]]' + tp.batchSize + '[[/td]]' +
+                      '[[td]]' + tp.dropoutRate + '[[/td]]' +
+                      '[[td]]' + tp.learningRate + '[[/td]]' +
+                      '[[td]]' + tp.activationFunction + '[[/td]]' +
+                      '[[td]]' + tp.numHiddenLayers + '[[/td]]' +
                       '[[td]]' + tp.recencyDecay + '[[/td]]' +
                       '[[td]]' + tp.actual + '[[/td]]' +
                       '[[td]]' + tp.predicted + '[[/td]]' +
@@ -4125,12 +4108,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  const bestOverall = topSettings[0];
-  const bestSum = document.getElementById('bestSettingsSummary');
-  const bestTxt = document.getElementById('bestSettingsText');
+  var bestOverall = topSettings[0];
+  var bestSum = document.getElementById('bestSettingsSummary');
+  var bestTxt = document.getElementById('bestSettingsText');
 
-  const mcLast = bestOverall.matchCountLast || 0;
-  const meLast = bestOverall.matchExtraLast || 0;
+  var mcLast = bestOverall.matchCountLast || 0;
+  var meLast = bestOverall.matchExtraLast || 0;
 
   bestSum.style.display = 'block';
   bestTxt.innerHTML =
@@ -4175,11 +4158,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     'Risk profile: [[strong]]' + (bestOverall.riskProfile || 'balanced') + '[[/strong]][[br]]' +
     'Laplace K: [[strong]]' + (bestOverall.laplaceK != null ? bestOverall.laplaceK : 1) + '[[/strong]], ' +
     'Skip Gamma: [[strong]]' + (bestOverall.skipGamma != null ? bestOverall.skipGamma : 0.2) + '[[/strong]]';
-
-    +      '[[/ul]]'
-    +    '[[/div]]'
-    +  '[[/div]]'
-    + '[[/div]]';
 
 
 // Also populate the "Save these settings" form with this best profile
@@ -4248,8 +4226,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (nameEl && !nameEl.value) {
     var today = new Date();
     var y = today.getFullYear();
-    var m = String(today.getMonth() + 1).padStart(2, '0');
-    var d = String(today.getDate()).padStart(2, '0');
+    var m = _padStart(String(today.getMonth() + 1), 2, '0');
+    var d = _padStart(String(today.getDate()), 2, '0');
     var defaultLabel = 'SKAI Lab – ' + (window.currentLotteryName || 'Lottery') +
                        ' – ' + y + '-' + m + '-' + d;
     nameEl.value = defaultLabel;
@@ -4292,15 +4270,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
   // 3) now build and send your result object—recencyDecay is defined here:
-  const result = {
-    epochs,
-    batchSize,
-    dropoutRate,
-    learningRate,
-    activationFunction,
-    numHiddenLayers,
-    recencyDecay,             
-    avgLoss,
+  var result = {
+    epochs: epochs,
+    batchSize: batchSize,
+    dropoutRate: dropoutRate,
+    learningRate: learningRate,
+    activationFunction: activationFunction,
+    numHiddenLayers: numHiddenLayers,
+    recencyDecay: recencyDecay,
+    avgLoss: avgLoss,
     avgAccuracy: avgAcc,
     avgPrecision: avgPrec,
     avgRecall: avgRec,
@@ -4484,7 +4462,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-startBtn.addEventListener('click', async () => {
+startBtn.addEventListener('click', async function() {
     await runWorkflow();
 });
 
@@ -4679,28 +4657,6 @@ function applySkaiPreset(mode) {
       setSliderRange('skipGamma', cfg.skipGamma, cfg.skipGamma);
     }
   }
-}
-
-
-// Wire SKAI preset buttons, if present
-var btnSkaiBalanced     = document.getElementById('skaiPresetBalanced');
-var btnSkaiConservative = document.getElementById('skaiPresetConservative');
-var btnSkaiExploratory  = document.getElementById('skaiPresetExploratory');
-
-if (btnSkaiBalanced) {
-  btnSkaiBalanced.addEventListener('click', function () {
-    applySkaiPreset('balanced');
-  });
-}
-if (btnSkaiConservative) {
-  btnSkaiConservative.addEventListener('click', function () {
-    applySkaiPreset('conservative');
-  });
-}
-if (btnSkaiExploratory) {
-  btnSkaiExploratory.addEventListener('click', function () {
-    applySkaiPreset('exploratory');
-  });
 }
 
 
@@ -5796,7 +5752,7 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
     container.style.display = settings.length ? '' : 'none';
   }
 
-  pauseBtn.addEventListener('click', () => {
+  pauseBtn.addEventListener('click', function() {
     isPaused = !isPaused;
     pauseBtn.innerText = isPaused ? 'Resume' : 'Pause';
   });
@@ -6115,7 +6071,7 @@ document.getElementById('presetExploratorySkai').addEventListener('click', funct
       runQABtn.textContent = 'Run QA Tests';
     });
   }
-  resetBtn.addEventListener('click', () => {
+  resetBtn.addEventListener('click', function() {
     matchDistribution = [0,0,0,0,0,0];
     updateMatchDistChart();
     topPredictions = [];
